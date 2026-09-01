@@ -51,7 +51,7 @@ export function ThemeToggle({ initialDark }: { initialDark: boolean }) {
 
   return (
     <div className='flex flex-col items-end gap-1.5'>
-      <span className='text-ink-muted text-xs font-medium tracking-wide uppercase'>Realm</span>
+      <span className='text-ink-muted text-xs font-medium tracking-wide uppercase'>Theme</span>
 
       <button
         type='button'
@@ -83,7 +83,8 @@ export function ThemeToggle({ initialDark }: { initialDark: boolean }) {
       </button>
 
       <span className='text-ink-muted text-[11px]'>
-        {current.label} <span className='opacity-60'>· {current.desc}</span>
+        {current.label}
+        {/* <span className='opacity-60'>· {current.desc}</span> */}
       </span>
     </div>
   )

@@ -86,7 +86,7 @@ export function FilterBar({
     <div className='space-y-5'>
       <input
         type='text'
-        placeholder='Search everything — premise, checks, lore…'
+        placeholder='Search everything…'
         value={filters.search}
         onChange={e => setFilters(f => ({ ...f, search: e.target.value }))}
         className='border-border bg-surface text-ink placeholder:text-ink-muted/60 focus:border-accent w-full border px-3 py-1.5 text-sm focus:outline-none'

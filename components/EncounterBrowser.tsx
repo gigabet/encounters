@@ -161,14 +161,10 @@ export function EncounterBrowser({
           </div>
 
           <dl className='border-border text-ink-muted mt-5 flex flex-wrap gap-x-6 gap-y-1.5 border-t pt-3 text-[11px]'>
-            <div className='flex items-baseline gap-1.5'>
-              <dt className='text-ink font-mono'>DC:</dt>
+            {/* <div className='flex items-baseline gap-1.5'>
+              <dt className='text-ink font-mono'>Save DC:</dt>
               <dd>12 + half the party's average level</dd>
-            </div>
-            <div className='flex items-baseline gap-1.5'>
-              <dt className='text-ink'>Ability to cast:</dt>
-              <dd>knows the spell or has prepared it before</dd>
-            </div>
+            </div> */}
             {THREAT_LEGEND.map(({ key, note }) => (
               <div key={key} className='flex items-center gap-1.5'>
                 <span className={`h-1.5 w-1.5 rounded-full ${THREAT_STYLE[key].dot}`} />
@@ -176,6 +172,10 @@ export function EncounterBrowser({
                 <dd>— {note}</dd>
               </div>
             ))}
+            <div className='flex items-baseline gap-1.5'>
+              <dt className='text-ink'>Ability to cast:</dt>
+              <dd>knows the spell or has prepared it before</dd>
+            </div>
           </dl>
         </header>
 
