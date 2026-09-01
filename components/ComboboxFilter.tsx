@@ -1,5 +1,6 @@
 'use client'
 
+import type { Genre } from '@/types/encounters'
 // components/ComboboxFilter.tsx
 //
 // A type-to-filter multi-select: focusing the input reveals the option
@@ -108,6 +109,7 @@ export function ComboboxFilter({
       <p className='text-ink-muted mb-1.5 text-xs'>{label}</p>
 
       {/* biome-ignore lint/a11y/useKeyWithClickEvents: focuses a real input below */}
+      {/** biome-ignore lint/a11y/noStaticElementInteractions: focuses a real input below */}
       <div
         ref={fieldRef}
         onClick={() => {
@@ -143,7 +145,7 @@ export function ComboboxFilter({
           onFocus={() => setOpen(true)}
           onKeyDown={onKeyDown}
           placeholder={selectedList.length === 0 ? placeholder : ''}
-          className='text-ink placeholder:text-ink-muted/60 min-w-[4rem] flex-1 bg-transparent text-sm focus:outline-none'
+          className='text-ink placeholder:text-ink-muted/60 min-w-16 flex-1 bg-transparent text-sm focus:outline-none'
           role='combobox'
           aria-expanded={open}
           aria-autocomplete='list'
@@ -161,11 +163,10 @@ export function ComboboxFilter({
             className='z-50'
           >
             {filtered.length > 0 && (
-              <ul
-                role='listbox'
-                className='border-border bg-surface max-h-48 w-full scrollbar-thin overflow-y-auto border py-1 text-sm shadow-md'
-              >
+              <ul className='border-border bg-surface max-h-48 w-full scrollbar-thin overflow-y-auto border py-1 text-sm shadow-md'>
                 {filtered.map(opt => (
+                  // biome-ignore lint/a11y/useFocusableInteractive: <.>
+                  // biome-ignore lint/a11y/noNoninteractiveElementToInteractiveRole: <.>
                   <li key={opt} role='option' aria-selected={false}>
                     <button
                       type='button'

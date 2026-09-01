@@ -60,25 +60,25 @@ export function ThemeToggle({ initialDark }: { initialDark: boolean }) {
         aria-checked={dark}
         aria-label={`Switch to ${dark ? THEMES.light.label : THEMES.dark.label}`}
         title={`${current.label} — ${current.desc}`}
-        className='border-border bg-surface hover:border-ink-muted relative inline-flex h-8 w-[68px] shrink-0 items-center rounded-full border px-1 transition-colors'
+        className='border-border bg-surface hover:border-ink-muted relative inline-flex h-8 w-17 shrink-0 items-center rounded-full border px-1 transition-colors'
       >
         <BsCloudFog2
-          className={`absolute left-[7px] h-3.5 w-3.5 transition-opacity ${
+          className={`absolute left-1.75 h-3.5 w-3.5 transition-opacity ${
             dark ? 'text-ink-muted opacity-30' : 'text-accent opacity-100'
           }`}
         />
         <GiTreeBranch
-          className={`absolute right-[7px] h-3.5 w-3.5 transition-opacity ${
+          className={`absolute right-1.75 h-3.5 w-3.5 transition-opacity ${
             dark ? 'text-accent opacity-100' : 'text-ink-muted opacity-30'
           }`}
         />
 
         <span
           className={`bg-accent relative z-10 flex h-6 w-6 items-center justify-center rounded-full shadow-sm transition-transform duration-200 ${
-            dark ? 'translate-x-[36px]' : 'translate-x-0'
+            dark ? 'translate-x-9' : 'translate-x-0'
           }`}
         >
-          <current.Icon className='h-3.5 w-3.5 text-white' />
+          <current.Icon className='h-3.5 w-3.5 text-white dark:text-olive-800!' />
         </span>
       </button>
 

@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react'
 import { THREAT_STYLE } from '@/lib/badges'
 import { buildHaystackIndex } from '@/lib/search'
-import type { Encounter } from '@/types/encounters'
+import type { Encounter, Genre } from '@/types/encounters'
 import { EncounterCard } from './EncounterCard'
 import { FilterBar, type Filters } from './FilterBar'
 import { ThemeToggle } from './ThemeToggle'
@@ -14,6 +14,7 @@ const DEFAULT_FILTERS: Filters = {
   pillars: new Set(),
   threat: new Set(),
   environment: new Set(),
+  genre: new Set(),
   tags: new Set(),
 }
 
@@ -40,6 +41,12 @@ export function EncounterBrowser({
   const environments = useMemo(() => {
     const set = new Set<string>()
     for (const e of encounters) for (const env of e.environment) if (env !== 'any') set.add(env)
+    return Array.from(set).sort()
+  }, [encounters])
+
+  const genres = useMemo(() => {
+    const set = new Set<Genre>()
+    for (const e of encounters) for (const g of e.genre) set.add(g)
     return Array.from(set).sort()
   }, [encounters])
 
@@ -78,6 +85,7 @@ export function EncounterBrowser({
           !e.environment.some(env => filters.environment.has(env))
         )
           return false
+        if (filters.genre.size > 0 && !e.genre.some(g => filters.genre.has(g))) return false
         if (filters.tags.size > 0) {
           const keywords = new Set([...(e.creature_type ?? []), ...e.tags])
           if (![...filters.tags].some(tag => keywords.has(tag))) return false
@@ -115,6 +123,7 @@ export function EncounterBrowser({
               setFilters={setFilters}
               environments={environments}
               tags={tags}
+              genres={genres}
             />
           </div>
         )}
@@ -128,6 +137,7 @@ export function EncounterBrowser({
           setFilters={setFilters}
           environments={environments}
           tags={tags}
+          genres={genres}
         />
       </aside>
 

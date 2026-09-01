@@ -3,7 +3,7 @@
 import type { Dispatch, ReactNode, SetStateAction } from 'react'
 import { THREAT_STYLE } from '@/lib/badges'
 import { MAX_LEVEL, MIN_LEVEL, TIERS, tierIndexForLevel } from '@/lib/tiers'
-import type { Pillar, Threat } from '@/types/encounters'
+import type { Genre, Pillar, Threat } from '@/types/encounters'
 import { ComboboxFilter } from './ComboboxFilter'
 
 export interface Filters {
@@ -12,6 +12,7 @@ export interface Filters {
   pillars: Set<Pillar>
   threat: Set<Threat>
   environment: Set<string>
+  genre: Set<string>
   tags: Set<string>
 }
 
@@ -65,11 +66,13 @@ export function FilterBar({
   setFilters,
   environments,
   tags,
+  genres,
 }: {
   filters: Filters
   setFilters: Dispatch<SetStateAction<Filters>>
   environments: string[]
   tags: string[]
+  genres: string[]
 }) {
   const toggleIn = <T,>(set: Set<T>, value: T) => {
     const next = new Set(set)
@@ -110,16 +113,6 @@ export function FilterBar({
       </div>
 
       <div>
-        <ComboboxFilter
-          label='Terrain'
-          placeholder='Search terrain…'
-          options={environments}
-          selected={filters.environment}
-          onChange={next => setFilters(f => ({ ...f, environment: next }))}
-        />
-      </div>
-
-      <div>
         <FacetLabel>Pillar</FacetLabel>
         <ToggleGroup
           options={PILLARS}
@@ -140,6 +133,26 @@ export function FilterBar({
               {THREAT_STYLE[v].label}
             </span>
           )}
+        />
+      </div>
+
+      <div>
+        <ComboboxFilter
+          label='Terrain'
+          placeholder='Search terrain…'
+          options={environments}
+          selected={filters.environment}
+          onChange={next => setFilters(f => ({ ...f, environment: next }))}
+        />
+      </div>
+
+      <div>
+        <ComboboxFilter
+          label='Genre'
+          placeholder='Search genres…'
+          options={genres}
+          selected={filters.genre}
+          onChange={next => setFilters(f => ({ ...f, genre: next }))}
         />
       </div>
 
