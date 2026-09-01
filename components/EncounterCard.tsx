@@ -6,11 +6,11 @@ import { EnvironmentIcon, environmentLabel } from '@/lib/environment-icons'
 import { renderTokens } from '@/lib/tokens'
 import type { Encounter } from '@/types/encounters'
 
-const MAX_ENV_ICONS = 4
+const MAX_ENV_ICONS = 10
 
 function PrepDots({ effort }: { effort: number }) {
   return (
-    <span className='font-light'>Effort:</span>
+    <span className='font-light'>Prep:</span>
     // <span className='inline-flex items-center gap-0.5 align-middle' aria-hidden>
     //   {[1, 2, 3].map(n => (
     //     <span
@@ -72,22 +72,13 @@ export function EncounterCard({
       <button
         type='button'
         onClick={() => setOpen(v => !v)}
-        className='flex w-full flex-col gap-2 text-left'
+        className='relative flex w-full flex-col gap-2 text-left'
         aria-expanded={open}
       >
         <div className='flex items-start justify-between gap-3'>
           <h3 className='font-display text-ink text-2xl leading-tight'>{encounter.title}</h3>
 
-          {/* Tucked out of the way: terrain icons + the expand/collapse cue */}
-          <div className='mt-1.5 flex shrink-0 items-center gap-2.5'>
-            {shownEnvs.length > 0 && (
-              <div className='text-ink-muted flex items-center gap-1 opacity-60' title={envTitle}>
-                {shownEnvs.map(env => (
-                  <EnvironmentIcon key={env} env={env} />
-                ))}
-                {extraEnvCount > 0 && <span className='text-[10px]'>+{extraEnvCount}</span>}
-              </div>
-            )}
+          <div className='absolute right-0 bottom-0 flex shrink-0 items-end gap-2.5'>
             <ChevronIcon open={open} />
           </div>
         </div>
@@ -111,6 +102,17 @@ export function EncounterCard({
             {prep.label}
           </span>
           {encounter.pillars.length > 0 && <span>{encounter.pillars.join(', ')}</span>}
+
+          <div className='ml-auto flex hidden shrink-0 items-end gap-2.5 text-base'>
+            {shownEnvs.length > 0 && (
+              <div className='text-ink-muted flex items-center gap-1 opacity-60' title={envTitle}>
+                {shownEnvs.map(env => (
+                  <EnvironmentIcon key={env} env={env} />
+                ))}
+                {extraEnvCount > 0 && <span className='text-sm'>+{extraEnvCount}</span>}
+              </div>
+            )}
+          </div>
         </div>
       </button>
 

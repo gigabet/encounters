@@ -6,16 +6,17 @@
 // read positionally against the current tier index.
 
 import type { ReactNode } from 'react'
+import * as link from '@/data/gameplay'
 import { evalFormula } from '@/lib/formula'
 import { TIERS, tierIndexForLevel } from './tiers'
 
 const TOKEN_RE = /\$(monster|spell|dc|gp|scale|formula):([^$]+)\$/g
 
 const STYLE: Record<string, string> = {
-  monster: 'text-danger border-b border-dotted border-danger/50',
+  monster: 'text-danger border-b border-dotted border-danger/50 hover:border-solid cursor-pointer',
   dc: 'font-mono text-accent',
   gp: 'text-caution',
-  spell: 'italic text-safe font-medium',
+  spell: 'text-safe font-medium hover:border-b border-safe/50 cursor-pointer',
   scale: 'font-medium',
   formula: 'border-b border-dotted',
 }
@@ -25,6 +26,9 @@ function formatValue(kind: string, raw: string): string {
     return `${Number(raw).toLocaleString()} gp`
   }
   return raw
+    .split('_')
+    .map(e => `${e[0].toLocaleUpperCase()}${e.substring(1)}`)
+    .join(' ')
 }
 
 export function renderTokens(text: string, partyLevel: number): ReactNode[] {
@@ -62,23 +66,31 @@ export function renderTokens(text: string, partyLevel: number): ReactNode[] {
 
     const options = body.split('|').map(s => s.trim())
     const resolved = options[Math.min(tierIndex, options.length - 1)]
+    let title: string | undefined
 
     if (options.length > 1) {
-      const title = options
+      title = options
         .map((opt, i) => `${TIERS[i]?.label ?? `Tier ${i + 1}`}: ${formatValue(kind, opt)}`)
         .join('\n')
+    }
+
+    if (kind === 'monster' || kind === 'spell')
+      nodes.push(
+        // @ts-expect-error
+        // biome-ignore lint/performance/noDynamicNamespaceImportAccess: false positive
+        <a key={key++} href={link[kind]?.[resolved]?.href} className={className} title={title}>
+          {/* biome-ignore lint/performance/noDynamicNamespaceImportAccess: false positive
+          @ts-expect-error */}
+          {link[kind]?.[resolved]?.name}
+        </a>
+      )
+    else
       nodes.push(
         <span key={key++} className={className} title={title}>
           {formatValue(kind, resolved)}
         </span>
       )
-    } else {
-      nodes.push(
-        <span key={key++} className={className}>
-          {formatValue(kind, resolved)}
-        </span>
-      )
-    }
+
     last = match.index + full.length
   }
   if (last < text.length) nodes.push(text.slice(last))

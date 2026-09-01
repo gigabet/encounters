@@ -108,7 +108,7 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className='hidden scrollbar-thin lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:w-56 lg:shrink-0 lg:overflow-y-auto lg:pr-3'>
+      <aside className='hidden scrollbar-thin lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:w-60 lg:shrink-0 lg:overflow-y-auto lg:pr-3'>
         <h2 className='font-display text-ink mb-4 text-lg'>Filters</h2>
         <FilterBar
           filters={filters}
