@@ -55,22 +55,24 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
 
   const filtered = useMemo(() => {
     const q = filters.search.trim().toLowerCase()
-    return encounters.filter(e => {
-      if (filters.pillars.size > 0 && !e.pillars.some(p => filters.pillars.has(p))) return false
-      if (filters.threat.size > 0 && !filters.threat.has(e.threat)) return false
-      if (
-        filters.environment.size > 0 &&
-        !e.environment.includes('any') &&
-        !e.environment.some(env => filters.environment.has(env))
-      )
-        return false
-      if (filters.tags.size > 0) {
-        const keywords = new Set([...(e.creature_type ?? []), ...e.tags])
-        if (![...filters.tags].some(tag => keywords.has(tag))) return false
-      }
-      if (q && !(haystacks.get(e.id) ?? '').includes(q)) return false
-      return true
-    })
+    return encounters
+      .filter(e => {
+        if (filters.pillars.size > 0 && !e.pillars.some(p => filters.pillars.has(p))) return false
+        if (filters.threat.size > 0 && !filters.threat.has(e.threat)) return false
+        if (
+          filters.environment.size > 0 &&
+          !e.environment.includes('any') &&
+          !e.environment.some(env => filters.environment.has(env))
+        )
+          return false
+        if (filters.tags.size > 0) {
+          const keywords = new Set([...(e.creature_type ?? []), ...e.tags])
+          if (![...filters.tags].some(tag => keywords.has(tag))) return false
+        }
+        if (q && !(haystacks.get(e.id) ?? '').includes(q)) return false
+        return true
+      })
+      .sort((a, b) => a.title.localeCompare(b.title))
   }, [encounters, filters, haystacks])
 
   const activeCount = activeFilterCount(filters)
@@ -106,7 +108,7 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
       </div>
 
       {/* Desktop sidebar */}
-      <aside className='hidden scrollbar-thin lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:w-60 lg:shrink-0 lg:overflow-y-auto lg:pr-3'>
+      <aside className='hidden scrollbar-thin lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:w-56 lg:shrink-0 lg:overflow-y-auto lg:pr-3'>
         <h2 className='font-display text-ink mb-4 text-lg'>Filters</h2>
         <FilterBar
           filters={filters}
