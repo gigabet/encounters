@@ -347,7 +347,7 @@ encounters:
     premise: The town's clock tower never announces the time. The belfry is completely silent. Townsfolk don't know why, and they have been unable to repair or replace it. They say the tower is indestructible.
     sections:
       - title: Explanation
-        description: The tower's bell is cursed with death magic. Many generations ago, townsfolk hired adventurers to deal with the curse, and the adventurers used $spell:Hallow$ (Silence) to mute the bell. The curse still lingers, but is contained. The truth has since been lost to time and many inaccurate legends have taken its place.
+        description: The tower's bell is cursed with death magic. Many generations agosfolk hired adventurers to deal with the curse, and the adventurers used $spell:Hallow$ (Silence) to mute the bell. The curse still lingers, but is contained. The truth has since been lost to time and many inaccurate legends have taken its place.
       - title: Resolution
         description: The curse is too powerful to lift. If the $spell:Hallow$ is dispelled, the bell starts to announce the time once more, but every ring of the bell casts $spell:Toll the Dead$ (level 11) on everyone in the town square.
     checks:
@@ -363,7 +363,7 @@ encounters:
         detail: The tower is extremely well-preserved. Much better than all other buildings.
       - check: DC 22 Arcana (12 if $spell:Detect Magic$ was used)
         detail: The tower is cursed, but the curse is dormant. Undoing the protective ward will unleash the curse's full power.
-    tags: [quest, town, curse, puzzle]
+    tags: [quest, curse, puzzle]
 
   - id: lost_door
     title: Lost Door
@@ -482,7 +482,7 @@ encounters:
     checks:
       - check: DC 18 History
         detail: Obscure legends mention a Black Lake where everyone drowns. It's thought that the lake is either a myth or its name is symbollic and its infamy exaggerated.
-    tags: [hazard, travel]
+    tags: [hazard, travel, doppelganger]
 
   - id: decomposed_barkeep
     title: Decomposed Barkeep
@@ -511,7 +511,7 @@ encounters:
         detail: Convince the barkeep that this is not a joke and persuade it to try to recall anything suspicious.
       - check: Necromancy subclass or DC 20 Religion
         detail: The barkeep can't be undead.
-    tags: [curse, town]
+    tags: [curse]
 
   - id: eternal_rest
     title: Eternal Rest

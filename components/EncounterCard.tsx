@@ -2,8 +2,11 @@
 
 import { useState } from 'react'
 import { PREP_STYLE, THREAT_STYLE } from '@/lib/badges'
+import { EnvironmentIcon, environmentLabel } from '@/lib/environment-icons'
 import { renderTokens } from '@/lib/tokens'
 import type { Encounter } from '@/types/encounters'
+
+const MAX_ENV_ICONS = 4
 
 function PrepDots({ effort }: { effort: number }) {
   return (
@@ -19,16 +22,50 @@ function PrepDots({ effort }: { effort: number }) {
   )
 }
 
+// Disclosure chevron — rotates on open so the card reads as obviously
+// expandable/collapsible rather than a plain block of text.
+function ChevronIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox='0 0 16 16'
+      width='16'
+      height='16'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      aria-hidden='true'
+      className={`text-ink-muted shrink-0 transition-transform duration-200 ${
+        open ? 'rotate-180' : ''
+      }`}
+    >
+      <path d='M4 6l4 4 4-4' />
+    </svg>
+  )
+}
+
 export function EncounterCard({
   encounter,
   partyLevel,
+  activeTags,
+  onToggleTag,
 }: {
   encounter: Encounter
   partyLevel: number
+  activeTags: Set<string>
+  onToggleTag: (tag: string) => void
 }) {
   const [open, setOpen] = useState(false)
   const threat = THREAT_STYLE[encounter.threat]
   const prep = PREP_STYLE[encounter.prep]
+
+  const envList = encounter.environment.includes('any') ? ['any'] : encounter.environment
+  const shownEnvs = envList.slice(0, MAX_ENV_ICONS)
+  const extraEnvCount = envList.length - shownEnvs.length
+  const envTitle = envList.map(environmentLabel).join(', ')
+
+  const keywords = [...(encounter.creature_type ?? []), ...encounter.tags]
 
   return (
     <article className='border-border border-b py-8 first:pt-0'>
@@ -36,8 +73,24 @@ export function EncounterCard({
         type='button'
         onClick={() => setOpen(v => !v)}
         className='flex w-full flex-col gap-2 text-left'
+        aria-expanded={open}
       >
-        <h3 className='font-display text-ink text-2xl leading-tight'>{encounter.title}</h3>
+        <div className='flex items-start justify-between gap-3'>
+          <h3 className='font-display text-ink text-2xl leading-tight'>{encounter.title}</h3>
+
+          {/* Tucked out of the way: terrain icons + the expand/collapse cue */}
+          <div className='mt-1.5 flex shrink-0 items-center gap-2.5'>
+            {shownEnvs.length > 0 && (
+              <div className='text-ink-muted flex items-center gap-1 opacity-60' title={envTitle}>
+                {shownEnvs.map(env => (
+                  <EnvironmentIcon key={env} env={env} />
+                ))}
+                {extraEnvCount > 0 && <span className='text-[10px]'>+{extraEnvCount}</span>}
+              </div>
+            )}
+            <ChevronIcon open={open} />
+          </div>
+        </div>
 
         <p className='text-ink-muted text-sm italic'>
           {encounter.category}
@@ -91,9 +144,26 @@ export function EncounterCard({
 
             <div className='mt-auto'>
               <h4 className='text-ink-muted mb-1.5 text-xs'>Keywords</h4>
-              <p className='text-ink-muted text-xs leading-relaxed'>
-                {[...(encounter.creature_type ?? []), ...encounter.tags].join(', ')}
-              </p>
+              <div className='flex flex-wrap gap-1.5'>
+                {keywords.sort().map(kw => {
+                  const active = activeTags.has(kw)
+                  return (
+                    <button
+                      type='button'
+                      key={kw}
+                      onClick={() => onToggleTag(kw)}
+                      aria-pressed={active}
+                      className={`rounded-sm border px-2 py-0.5 text-xs transition-colors ${
+                        active
+                          ? 'border-accent bg-accent/10 text-accent'
+                          : 'border-border text-ink-muted hover:border-ink-muted hover:text-ink'
+                      }`}
+                    >
+                      {kw}
+                    </button>
+                  )
+                })}
+              </div>
             </div>
           </div>
 

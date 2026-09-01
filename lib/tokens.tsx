@@ -14,7 +14,7 @@ const TOKEN_RE = /\$(monster|spell|dc|gp|scale|formula):([^$]+)\$/g
 const STYLE: Record<string, string> = {
   monster: 'text-danger border-b border-dotted border-danger/50',
   dc: 'font-mono text-accent',
-  gp: 'font-mono text-caution',
+  gp: 'text-caution',
   spell: 'italic text-safe font-medium',
   scale: 'font-medium',
   formula: 'border-b border-dotted',

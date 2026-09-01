@@ -32,7 +32,7 @@
   /* "deadwood" -- creepy, cool-grey, desaturated */
   --canvas: var(--color-neutral-900);
   --surface: var(--color-neutral-800);
-  --border: var(--color-neutral-800);
+  --border: var(--color-neutral-700);
   --ink: var(--color-gray-300);
   --ink-muted: var(--color-gray-400);
   --accent: #b0b0b0;
@@ -64,4 +64,26 @@ html {
 body {
   background: var(--canvas);
   color: var(--ink);
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 9999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-ink-muted);
 }

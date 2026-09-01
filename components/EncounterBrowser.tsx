@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { buildHaystackIndex } from '@/lib/search'
 import type { Encounter } from '@/types/encounters'
 import { EncounterCard } from './EncounterCard'
 import { FilterBar, type Filters } from './FilterBar'
@@ -9,14 +10,14 @@ import { ThemeToggle } from './ThemeToggle'
 const DEFAULT_FILTERS: Filters = {
   search: '',
   partyLevel: 5,
-  category: 'all',
   pillars: new Set(),
   threat: new Set(),
   environment: new Set(),
+  tags: new Set(),
 }
 
 function activeFilterCount(f: Filters): number {
-  return (f.category !== 'all' ? 1 : 0) + f.pillars.size + f.threat.size + f.environment.size
+  return f.pillars.size + f.threat.size + f.environment.size + f.tags.size
 }
 
 export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
@@ -29,10 +30,32 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
     return Array.from(set).sort()
   }, [encounters])
 
+  // Every tag + creature_type across the corpus, for a tag cloud that's
+  // always visible rather than only appearing once something's selected.
+  const tags = useMemo(() => {
+    const set = new Set<string>()
+    for (const e of encounters) {
+      for (const t of e.tags) set.add(t)
+      for (const c of e.creature_type ?? []) set.add(c)
+    }
+    return Array.from(set).sort()
+  }, [encounters])
+
+  // Full-corpus search index (premise, section bodies, checks, dm_notes —
+  // not just title/tags), rebuilt only when the encounter list changes.
+  const haystacks = useMemo(() => buildHaystackIndex(encounters), [encounters])
+
+  const toggleTag = (tag: string) => {
+    setFilters(f => {
+      const next = new Set(f.tags)
+      next.has(tag) ? next.delete(tag) : next.add(tag)
+      return { ...f, tags: next }
+    })
+  }
+
   const filtered = useMemo(() => {
     const q = filters.search.trim().toLowerCase()
     return encounters.filter(e => {
-      if (filters.category !== 'all' && e.category !== filters.category) return false
       if (filters.pillars.size > 0 && !e.pillars.some(p => filters.pillars.has(p))) return false
       if (filters.threat.size > 0 && !filters.threat.has(e.threat)) return false
       if (
@@ -41,22 +64,14 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
         !e.environment.some(env => filters.environment.has(env))
       )
         return false
-      if (q) {
-        const haystack = [
-          e.title,
-          e.pitch,
-          ...e.genre,
-          ...(e.creature_type ?? []),
-          ...e.tags,
-          ...e.environment,
-        ]
-          .join(' ')
-          .toLowerCase()
-        if (!haystack.includes(q)) return false
+      if (filters.tags.size > 0) {
+        const keywords = new Set([...(e.creature_type ?? []), ...e.tags])
+        if (![...filters.tags].some(tag => keywords.has(tag))) return false
       }
+      if (q && !(haystacks.get(e.id) ?? '').includes(q)) return false
       return true
     })
-  }, [encounters, filters])
+  }, [encounters, filters, haystacks])
 
   const activeCount = activeFilterCount(filters)
 
@@ -80,15 +95,25 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
         </button>
         {mobileFiltersOpen && (
           <div className='border-border bg-surface border border-t-0 p-4'>
-            <FilterBar filters={filters} setFilters={setFilters} environments={environments} />
+            <FilterBar
+              filters={filters}
+              setFilters={setFilters}
+              environments={environments}
+              tags={tags}
+            />
           </div>
         )}
       </div>
 
       {/* Desktop sidebar */}
-      <aside className='hidden lg:sticky lg:top-8 lg:block lg:w-56 lg:shrink-0'>
+      <aside className='hidden scrollbar-thin lg:sticky lg:top-8 lg:block lg:max-h-[calc(100vh-4rem)] lg:w-60 lg:shrink-0 lg:overflow-y-auto lg:pr-3'>
         <h2 className='font-display text-ink mb-4 text-lg'>Filters</h2>
-        <FilterBar filters={filters} setFilters={setFilters} environments={environments} />
+        <FilterBar
+          filters={filters}
+          setFilters={setFilters}
+          environments={environments}
+          tags={tags}
+        />
       </aside>
 
       {/* Main content */}
@@ -106,7 +131,13 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
 
         <div>
           {filtered.map(e => (
-            <EncounterCard key={e.id} encounter={e} partyLevel={filters.partyLevel} />
+            <EncounterCard
+              key={e.id}
+              encounter={e}
+              partyLevel={filters.partyLevel}
+              activeTags={filters.tags}
+              onToggleTag={toggleTag}
+            />
           ))}
         </div>
 
