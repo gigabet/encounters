@@ -1,15 +1,25 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Fraunces, Geist, Geist_Mono, IBM_Plex_Mono, Work_Sans } from 'next/font/google'
 import './globals.css'
+import Header from '@/app/header'
+import Sidebar from '@/app/sidebar'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+export const fraunces = Fraunces({
   subsets: ['latin'],
+  variable: '--font-fraunces',
+  weight: ['500', '600'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+export const workSans = Work_Sans({
   subsets: ['latin'],
+  variable: '--font-work-sans',
+  weight: ['400', '500'],
+})
+
+export const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-plex-mono',
+  weight: ['400', '500'],
 })
 
 export const metadata: Metadata = {
@@ -19,8 +29,29 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang='en' className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className='flex min-h-full flex-col'>{children}</body>
+    <html
+      lang='en'
+      className={`${fraunces.variable} ${workSans.variable} ${plexMono.variable} h-full antialiased`}
+    >
+      <head>
+        <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: intended
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                var stored = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (stored === 'dark' || (!stored && prefersDark)) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className='min-h-full'>
+        <main>{children}</main>
+      </body>
     </html>
   )
 }

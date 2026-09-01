@@ -1,26 +1,67 @@
+/* app/globals.css */
 @import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Every color used in the app is a semantic role (canvas, ink, accent...),
+ * not a raw palette name. To change the whole look, edit the hex values
+ * below -- nothing in the components needs to change. Light values live in
+ * :root, dark overrides live in .dark; toggle by adding/removing the
+ * `dark` class on <html> (see components/ThemeToggle.tsx).
+ */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* "misty tundra" -- bleached, washed out, cold-neutral */
+  --canvas: var(--color-mist-100); /* page background */
+  --surface: var(--color-mist-50); /* hover tint / rail background, barely lifted off canvas */
+  --border: var(--color-mist-300); /* hairline rules */
+  --ink: var(--color-olive-700); /* primary text */
+  --ink-muted: var(--color-olive-600); /* secondary text, meta lines, labels */
+  --accent: #1a472d; /* the one interactive color -- muted sage */
+  --danger: #821e00; /* deadly -- muted brick, not red */
+  --caution: #9b7923; /* nuisance -- muted ochre */
+  --safe: #396c4d; /* safe -- muted moss */
+
+  /* --accent: #74857b; */
+  /* --danger: #9c6b5f; */
+  /* --caution: #9c8a5c; */
+  /* --safe: #728a6d; */
+}
+
+.dark {
+  /* "deadwood" -- creepy, cool-grey, desaturated */
+  --canvas: var(--color-neutral-900);
+  --surface: var(--color-neutral-800);
+  --border: var(--color-neutral-800);
+  --ink: var(--color-gray-300);
+  --ink-muted: var(--color-gray-400);
+  --accent: #b0b0b0;
+  --danger: #c36f60;
+  --caution: #b8954a;
+  --safe: #698e60;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-caution: var(--caution);
+  --color-safe: var(--safe);
+
+  --font-display: var(--font-fraunces), ui-serif, serif;
+  --font-sans: var(--font-work-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scrollbar-gutter: stable;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
 }
