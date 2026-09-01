@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { THREAT_STYLE } from '@/lib/badges'
 import { buildHaystackIndex } from '@/lib/search'
 import type { Encounter } from '@/types/encounters'
 import { EncounterCard } from './EncounterCard'
@@ -16,11 +17,23 @@ const DEFAULT_FILTERS: Filters = {
   tags: new Set(),
 }
 
+const THREAT_LEGEND = [
+  { key: 'safe', note: 'no inherent danger' },
+  { key: 'nuisance', note: 'can injure, curse, or cost time/resources' },
+  { key: 'deadly', note: 'can kill or remove from play' },
+] as const
+
 function activeFilterCount(f: Filters): number {
   return f.pillars.size + f.threat.size + f.environment.size + f.tags.size
 }
 
-export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
+export function EncounterBrowser({
+  encounters,
+  initialDark,
+}: {
+  encounters: Encounter[]
+  initialDark: boolean
+}) {
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS)
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
@@ -120,15 +133,40 @@ export function EncounterBrowser({ encounters }: { encounters: Encounter[] }) {
 
       {/* Main content */}
       <div className='min-w-0 flex-1'>
-        <header className='mb-8 flex items-start justify-between gap-4'>
-          <div>
-            <h1 className='font-display text-ink text-2xl'>Encounter Ledger</h1>
-            <p className='text-ink-muted mt-1 text-sm'>
-              {filtered.length} {filtered.length === 1 ? 'encounter' : 'encounters'} · pick a
-              terrain and party level to find what's waiting in the hex.
-            </p>
+        <header className='mb-8'>
+          <div className='flex items-start justify-between gap-4'>
+            <div>
+              <p className='text-ink-muted font-mono text-[11px] tracking-[0.2em] uppercase'>
+                Hexcrawl Catalogue
+              </p>
+              <h1 className='font-display text-ink mt-1 text-3xl tracking-tight'>
+                Supernatural Encounters
+              </h1>
+              <p className='text-ink-muted mt-1 text-sm'>
+                {filtered.length} {filtered.length === 1 ? 'encounter' : 'encounters'} · select
+                party level to scale
+              </p>
+            </div>
+            <ThemeToggle initialDark={initialDark} />
           </div>
-          <ThemeToggle />
+
+          <dl className='border-border text-ink-muted mt-5 flex flex-wrap gap-x-6 gap-y-1.5 border-t pt-3 text-[11px]'>
+            <div className='flex items-baseline gap-1.5'>
+              <dt className='text-ink font-mono'>DC:</dt>
+              <dd>12 + half the party's average level</dd>
+            </div>
+            <div className='flex items-baseline gap-1.5'>
+              <dt className='text-ink'>Ability to cast:</dt>
+              <dd>knows the spell or has prepared it before</dd>
+            </div>
+            {THREAT_LEGEND.map(({ key, note }) => (
+              <div key={key} className='flex items-center gap-1.5'>
+                <span className={`h-1.5 w-1.5 rounded-full ${THREAT_STYLE[key].dot}`} />
+                <dt className={THREAT_STYLE[key].text}>{THREAT_STYLE[key].label}</dt>
+                <dd>— {note}</dd>
+              </div>
+            ))}
+          </dl>
         </header>
 
         <div>

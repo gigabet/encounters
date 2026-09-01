@@ -76,9 +76,15 @@ export function renderTokens(text: string, partyLevel: number): ReactNode[] {
 
     if (kind === 'monster' || kind === 'spell')
       nodes.push(
-        // @ts-expect-error
-        // biome-ignore lint/performance/noDynamicNamespaceImportAccess: false positive
-        <a key={key++} href={link[kind]?.[resolved]?.href} className={className} title={title}>
+        <a
+          key={key++}
+          // @ts-expect-error
+          // biome-ignore lint/performance/noDynamicNamespaceImportAccess: false positive
+          href={link[kind]?.[resolved]?.href}
+          className={className}
+          title={title}
+          target='_blank'
+        >
           {/* biome-ignore lint/performance/noDynamicNamespaceImportAccess: false positive
           @ts-expect-error */}
           {link[kind]?.[resolved]?.name}
