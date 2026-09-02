@@ -9,27 +9,27 @@ export interface Encounter {
     pillars:        Pillar[];
     pitch:          string;
     genre:          Genre[];
+    creature_type?: string[];
     threat:         Threat;
     prep:           Prep;
     environment:    string[];
     premise:        string;
     sections:       Section[];
+    dm_notes?:      string;
     checks:         Check[];
     tags:           string[];
-    creature_type?: string[];
-    dm_notes?:      string;
 }
 
-export type Category = "Phenomenon" | "Location" | "NPC" | "Object";
+export type Category = "Location" | "Object" | "NPC" | "Phenomenon";
 
 export interface Check {
     check:  string;
     detail: string;
 }
 
-export type Genre = "cosmic" | "liminal" | "psychological" | "folk" | "body horror" | "gothic" | "melancholic";
+export type Genre = "gothic" | "body horror" | "folk horror" | "melancholic" | "liminal" | "psychological" | "cosmic";
 
-export type Pillar = "exploration" | "social" | "combat";
+export type Pillar = "exploration" | "combat" | "social";
 
 export type Prep = "drop-in" | "short" | "quest";
 
@@ -39,4 +39,4 @@ export interface Section {
     examples?:   string[];
 }
 
-export type Threat = "nuisance" | "deadly" | "safe";
+export type Threat = "deadly" | "nuisance" | "safe";

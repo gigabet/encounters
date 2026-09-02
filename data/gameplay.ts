@@ -51,6 +51,26 @@ export const monster = {
     name: 'Mage',
     href: 'https://www.dndbeyond.com/monsters/4831023-mage',
   },
+  darkling: {
+    name: 'Darkling',
+    href: 'https://www.dndbeyond.com/monsters/17231-darkling',
+  },
+  darkling_elder: {
+    name: 'Darkling Elder',
+    href: 'https://www.dndbeyond.com/monsters/17232-darkling-elder',
+  },
+  vampire_nightbringer: {
+    name: 'Vampire Nightbringer',
+    href: 'https://www.dndbeyond.com/monsters/5195248-vampire-nightbringer',
+  },
+  berserker: {
+    name: 'Berserker',
+    href: 'https://www.dndbeyond.com/monsters/4904621-berserker',
+  },
+  druid: {
+    name: 'Druid',
+    href: 'https://www.dndbeyond.com/monsters/5194976-druid',
+  },
 }
 
 export const spell = {
@@ -137,5 +157,9 @@ export const spell = {
   invisibility: {
     name: 'Invisibility',
     href: 'https://www.dndbeyond.com/spells/2619116-invisibility',
+  },
+  see_invisibility: {
+    name: 'See Invisibility',
+    href: 'https://www.dndbeyond.com/spells/2619011-see-invisibility',
   },
 }

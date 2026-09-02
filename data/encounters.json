@@ -1,6 +1,514 @@
 {
   "encounters": [
     {
+      "id": "black_lake",
+      "title": "Black Lake",
+      "category": "Location",
+      "pillars": [
+        "exploration",
+        "combat"
+      ],
+      "pitch": "A pitch-black lake reveals the viewer's drowned corpse, which reaches out to drag them below.",
+      "genre": [
+        "gothic",
+        "body horror"
+      ],
+      "creature_type": [
+        "undead"
+      ],
+      "threat": "deadly",
+      "prep": "drop-in",
+      "environment": [
+        "swamp",
+        "underdark",
+        "forest"
+      ],
+      "premise": "The party must cross a lake of perfectly still, black water that reflects nothing. If a character looks into the water, they see their own corpse at the bottom, beckoning them.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "Touching the lake while looking at it forces a character to make a DC $formula:12+floor(level/2)$ Charisma saving throw. On a failed save, their corpse animates as a $monster:ghoul|wight|ghast_gravecaller|vampire$ and rises from the lake to drag the character into the frigid water. The character has the Grappled condition from the $monster:ghoul|wight|ghast_gravecaller|vampire$ and is Charmed while Grappled by it. If the character dies, the $monster:ghoul|wight|ghast_gravecaller|vampire$ disappears."
+        },
+        {
+          "title": "Resolution",
+          "description": "If the character breaks the grapple, they are no longer Charmed. The $monster:ghoul|wight|ghast_gravecaller|vampire$ becomes an inanimate corpse if defeated. The main risk is drowning."
+        }
+      ],
+      "dm_notes": "It should be possible to bypass the lake, but this should extend the party's journey by at least 1 day.",
+      "checks": [
+        {
+          "check": "DC 18 History",
+          "detail": "Obscure legends mention a Black Lake where everyone drowns. Some think it's either a myth or its name is symbollic."
+        }
+      ],
+      "tags": [
+        "hazard",
+        "travel",
+        "doppelganger"
+      ]
+    },
+    {
+      "id": "crooked_idol",
+      "title": "Crooked Idol",
+      "category": "Object",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A faceless wooden shrine demands a personal sacrifice from passersbies.",
+      "genre": [
+        "folk horror",
+        "melancholic"
+      ],
+      "threat": "nuisance",
+      "prep": "drop-in",
+      "environment": [
+        "forest",
+        "hill",
+        "mountain",
+        "swamp"
+      ],
+      "premise": "In a clearing or along a ridge, the party finds a small shrine, crudely carved from black wood, depicting a figure with too many arms and no face. Offerings surround it: withered flowers, small bones, a child's toy, a lock of hair, a silver coin. The idol radiates a sense of patient need.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "Any character who passes within 10 feet of the idol and then departs without leaving an offering must make a DC $formula:12+floor(level/2)$ Charisma saving throw. They automatically fail if they remove any of the existing offerings from the shrine. On a failure, the character is cursed by an angry deity."
+        },
+        {
+          "title": "Curse",
+          "description": "The character is plagued by a persistent feeling of being watched. Food and water tastes like ash in their mouth, and sleep brings only nightmares of the faceless figure. They are too restless to benefit from Short Rests."
+        },
+        {
+          "title": "Cure",
+          "description": "The curse can be cured by a spell that dispels possession or curses using a level 5+ spell slot, or if the character returns to the idol and leaves an offering of personal significance of the player's choice. The idol disregards meaningless offerings."
+        },
+        {
+          "title": "Blessing",
+          "description": "If a character leaves an offering the very first time they approach the idol, they receive a Charm of Restoration."
+        }
+      ],
+      "checks": [
+        {
+          "check": "DC 15 Investigation",
+          "detail": "The offerings are mostly sentimental."
+        },
+        {
+          "check": "DC 18 Religion",
+          "detail": "A minor folk god. Such gods do not ask for much, only that you do not ignore them, and that you are willing to part with what you have."
+        },
+        {
+          "check": "DC 20 Arcana",
+          "detail": "The magic is tied to the place itself, not the idol. Breaking the idol would anger whoever built it, and the curse would remain until the offering is made anyway."
+        }
+      ],
+      "tags": [
+        "divine",
+        "curse",
+        "reward",
+        "rest",
+        "healing"
+      ],
+      "dm_notes": "Subtly convey to the party that they feel a faint nudge to contribute, so that the curse doesn't ambush them as a surprise."
+    },
+    {
+      "id": "cursed_oasis",
+      "title": "Cursed Oasis",
+      "category": "Location",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A lush grove offers $spell:goodberry$ fruits that addict the eater.",
+      "genre": [
+        "folk horror",
+        "liminal"
+      ],
+      "threat": "nuisance",
+      "prep": "drop-in",
+      "environment": [
+        "desert",
+        "swamp",
+        "mountain",
+        "underdark"
+      ],
+      "premise": "The party finds a colorful, bountiful oasis in an otherwise hostile environment, such as a desert, deadwood, or a poisonous bog. There are lush bushes, laden trees, or mushroom clusters with plump, aromatic fruits.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "The fruits have the properties of a $spell:goodberry$. Once picked, the fruits spoil after 1 day."
+        },
+        {
+          "title": "Curse",
+          "description": "A creature that consumes a fruit becomes cursed and craves the oasis fruits whenever it's hungry. It can't gain nourishment from any other food."
+        },
+        {
+          "title": "Cure",
+          "description": "$spell:remove_curse$ or $spell:greater_restoration$."
+        }
+      ],
+      "checks": [
+        {
+          "check": "Ability to cast $spell:goodberry$",
+          "detail": "The fruit is a $spell:goodberry$."
+        },
+        {
+          "check": "DC 15 Survival",
+          "detail": "The fruit is unnaturally free of blemishes and avoided by insects."
+        },
+        {
+          "check": "$spell:detect_magic$ or DC 20 Arcana",
+          "detail": "Enchantment magic."
+        }
+      ],
+      "tags": [
+        "food",
+        "curse",
+        "healing",
+        "reward"
+      ],
+      "dm_notes": "Best used when the party needs food *and* healing."
+    },
+    {
+      "id": "decomposed_barkeep",
+      "title": "Decomposed Barkeep",
+      "category": "NPC",
+      "pillars": [
+        "social"
+      ],
+      "pitch": "A rotting zombie works as a tavern barkeep, and nobody seems to notice.",
+      "genre": [
+        "body horror",
+        "folk horror"
+      ],
+      "creature_type": [
+        "undead"
+      ],
+      "threat": "safe",
+      "prep": "short",
+      "environment": [
+        "urban"
+      ],
+      "premise": "The barkeep in one of the village taverns looks like a $monster:zombie$. It otherwise behaves and speaks completely ordinary. Nobody seems to notice its decayed appearance, including itself. If quizzed, they assume the party is making a pitiful attempt at humor.",
+      "sections": [
+        {
+          "title": "Explanation",
+          "description": "Somebody has cursed the barkeep to appear undead to outsiders."
+        },
+        {
+          "title": "Cure",
+          "description": "$spell:remove_curse$ or $spell:greater_restoration$ dispels the curse, but only outsiders can tell that anything happened."
+        }
+      ],
+      "checks": [
+        {
+          "check": "Creature type detection",
+          "detail": "The barkeep reads as Humanoid."
+        },
+        {
+          "check": "DC 15 Medicine",
+          "detail": "The barkeep is breathing and has a pulse."
+        },
+        {
+          "check": "DC 20 Perception",
+          "detail": "The barkeep appears alive when viewed through reflective surfaces."
+        },
+        {
+          "check": "DC 20 Persuasion",
+          "detail": "Convince the barkeep that this is not a joke and persuade it to try to recall anything suspicious."
+        },
+        {
+          "check": "Necromancy subclass or DC 20 Religion",
+          "detail": "The barkeep can't be undead."
+        }
+      ],
+      "tags": [
+        "curse",
+        "puzzle",
+        "hook"
+      ],
+      "dm_notes": "A minor atmospheric encounter for low stakes roleplay."
+    },
+    {
+      "id": "devils_bargain",
+      "title": "Devil's Bargain",
+      "category": "NPC",
+      "pillars": [
+        "social"
+      ],
+      "pitch": "A generous treasure hoard binds looters to an implicit infernal contract.",
+      "genre": [
+        "gothic",
+        "psychological"
+      ],
+      "creature_type": [
+        "infernal"
+      ],
+      "threat": "nuisance",
+      "prep": "quest",
+      "environment": [
+        "any"
+      ],
+      "premise": "The party finds an unusually large treasure after an easy encounter – at least $gp:1000|2500|5000|15000$ worth of gems and coins. The treasure is laced with subtle divination magic.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "If the party loots the treasure, a devil becomes aware of their presence. The devil considers the treasure an advance payment for a task. By taking it, the party has implicitly agreed."
+        },
+        {
+          "title": "The Devil",
+          "description": "Next time the party rests, the devil appears to meet them. It explains the deal: the treasure was payment for a task. The devil promises another $gp:1000|2500|5000|15000$ upon completion. The promise is genuine.",
+          "examples": [
+            "Retrieve a lock of hair from a particular person",
+            "Swap a temple's holy relic with a provided copy",
+            "Draw a sigil with lamb's blood on somebody's door"
+          ]
+        },
+        {
+          "title": "Refusal",
+          "description": "If the party refuses the task but returns the treasure plus $gp:200|500|1000|5000$ for \"administrative expenses\", the devil accepts, vanishes, and does not trouble them again. If the party refuses the task without returning the treasure, or attacks the devil, it vanishes. If the party ever leaves their belongings unattended, the devil robs them of every single coin, gem and precious metal they possess until it reclaims what it's owed. It's not interested in gear or magic items, only in treasure."
+        }
+      ],
+      "dm_notes": "The task should be mysterious but creepy. The devil prefers not to elaborate and downplays it if pressed for details. The devil is always polite, friendly and pleasant, even if met with hostility.",
+      "checks": [
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "The treasure is laced with subtle divination magic."
+        },
+        {
+          "check": "DC 15 Religion or DC 20 Insight",
+          "detail": "The devil will honor the deal."
+        }
+      ],
+      "tags": [
+        "treasure",
+        "deal",
+        "reward",
+        "hook",
+        "quest"
+      ]
+    },
+    {
+      "id": "effigies",
+      "title": "Effigies",
+      "category": "Object",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A set of wicker effigies bears an uncanny resemblance to the party.",
+      "genre": [
+        "folk horror",
+        "body horror"
+      ],
+      "threat": "nuisance",
+      "prep": "short",
+      "environment": [
+        "forest",
+        "swamp",
+        "mountain",
+        "arctic"
+      ],
+      "premise": "The party finds a group of crude humanoid figures woven from cloth, straw and wicker, propped against nearby trees and rocks. Despite the rough make, the effigies look unmistakably like the party, down to their clothes and hairstyles.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "Any character that sees their effigy feels their skin crawl as they become cursed. While cursed, they have Disadvantage on all Wisdom saving throws, and allow the creator of the effigy to see through their eyes."
+        },
+        {
+          "title": "Cure",
+          "description": "Destroying the effigy ends the curse, but inflicts the same destruction on the character – such as immolation if the effigy was burned. The character drops to 0 Hit Points but is stable."
+        }
+      ],
+      "checks": [
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "Divination and Necromancy."
+        },
+        {
+          "check": "DC 17 History or DC 19 Religion",
+          "detail": "Insular religions and witchcraft often make use of such effigies for malignant rituals and curses."
+        },
+        {
+          "check": "DC 20 Arcana",
+          "detail": "Sympathetic magic – destroying the effigy ends it, but is exceedingly painful."
+        }
+      ],
+      "tags": [
+        "fey",
+        "curse",
+        "trap",
+        "hook"
+      ],
+      "dm_notes": "Can serve as a dramatic hook for a folk horror campaign."
+    },
+    {
+      "id": "empty_tavern",
+      "title": "Empty Tavern",
+      "category": "Location",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A fully lit, steaming feast awaits in a seemingly abandoned roadside tavern.",
+      "genre": [
+        "liminal",
+        "melancholic"
+      ],
+      "threat": "safe",
+      "prep": "drop-in",
+      "environment": [
+        "grassland",
+        "forest",
+        "hill",
+        "mountain"
+      ],
+      "premise": "The party stumbles upon a roadside tavern that is lit and warm, with smoke curling up from the chimney. The tables inside are set for a feast, with platters of roasted game, bowls of stew, loaves of crusty bread, wheels of cheese, and flagons of ale. The food is hot, as if just served. The tavern, however, is completely empty.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "The feast has the properties of a $spell:heroes_feast$. It's not cursed or poisoned."
+        },
+        {
+          "title": "Persistence",
+          "description": "The tavern disappears if the party loses line of sight to it."
+        }
+      ],
+      "checks": [
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "Conjuration everywhere."
+        },
+        {
+          "check": "DC 15 Investigation (after 1+ minutes)",
+          "detail": "The food is not cooling, nor is the fireplace consuming the logs."
+        },
+        {
+          "check": "DC 21 Arcana, or ability to cast $spell:heroes_feast$",
+          "detail": "The food is a $spell:heroes_feast$."
+        },
+        {
+          "check": "DC 20 Perception",
+          "detail": "Everything is pristine. No dust, cobwebs, or any wear and tear. It's like the building just appeared."
+        },
+        {
+          "check": "DC 25 Religion",
+          "detail": "Some gods of hospitality are known to intervene in such manner to help weary travellers. They don't require anything in return, only faith and trust."
+        }
+      ],
+      "tags": [
+        "benign",
+        "sanctuary",
+        "food",
+        "divine",
+        "reward"
+      ],
+      "dm_notes": "Benign encounters used early in an adventure remind players that not everything the party encounters is cursed."
+    },
+    {
+      "id": "eternal_rest",
+      "title": "Eternal Rest",
+      "category": "Phenomenon",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A peaceful resting ground cures fatigue but slowly petrifies the resting travelers.",
+      "genre": [
+        "body horror",
+        "liminal",
+        "melancholic"
+      ],
+      "threat": "deadly",
+      "prep": "drop-in",
+      "environment": [
+        "grassland",
+        "hill",
+        "mountain",
+        "desert"
+      ],
+      "premise": "This region is sparsely littered with Petrified bodies, all sitting or lying on the ground. Any character who has Exhaustion levels soon begins to feel an urge to sit down and rest. If a character sits down, their worries and fatigue instantly start waning.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "A character that finishes a Short Rest in this area loses 1 Exhaustion level. For every two hours spent resting, a character is targeted by $spell:flesh_to_stone$ (DC $formula:12+floor(level/2)$)."
+        }
+      ],
+      "checks": [
+        {
+          "check": "Observation",
+          "detail": "The Petrified bodies all appear to be sleeping or resting."
+        },
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "Transmutation."
+        },
+        {
+          "check": "DC 10 Medicine",
+          "detail": "No signs of struggle. They willingly succumbed."
+        },
+        {
+          "check": "DC 15 Arcana",
+          "detail": "The magic is two-pronged. It removes fatigue and petrifies. The petrifying part is weaker."
+        }
+      ],
+      "tags": [
+        "hazard",
+        "rest",
+        "trap"
+      ]
+    },
+    {
+      "id": "evil_twins",
+      "title": "Evil Twins",
+      "category": "NPC",
+      "pillars": [
+        "social",
+        "combat"
+      ],
+      "pitch": "An exact duplicate party appears in the wilderness, waiting for the perfect moment to replace their originals.",
+      "genre": [
+        "psychological",
+        "gothic"
+      ],
+      "creature_type": [
+        "doppelganger",
+        "fey"
+      ],
+      "threat": "deadly",
+      "prep": "short",
+      "environment": [
+        "forest",
+        "grassland",
+        "hill",
+        "swamp",
+        "underdark"
+      ],
+      "premise": "The party meets another party that looks exactly like them, lost in the same area. The clones have the party's memories and appear cooperative.",
+      "sections": [
+        {
+          "title": "Explanation",
+          "description": "The clones are physical avatars of survival greed, made manifest by a dark leyline that crosses the land."
+        },
+        {
+          "title": "Effect",
+          "description": "If joined, the clones turn on the characters at the next encounter or attack them while resting. In combat, each clone uses the $monster:ghoul|wight|ghast|vampire$ statistics, except it is a Fey."
+        }
+      ],
+      "checks": [
+        {
+          "check": "DC 15 Arcana or Nature",
+          "detail": "Presence of a leyline. Can cause strange manifestations."
+        },
+        {
+          "check": "DC 20 Perception or Insight",
+          "detail": "Subtle malevolence about the clones' appearance or behavior."
+        },
+        {
+          "check": "DC 25 Arcana or Nature",
+          "detail": "The leyline is tainted and the clones are manifestations of survival greed. They will betray the party."
+        }
+      ],
+      "dm_notes": "The clones don't know they are clones. If the party identifies the leyline, have the clones accuse the party of being the fake ones.",
+      "tags": [
+        "trap"
+      ]
+    },
+    {
       "id": "false_stars",
       "title": "False Stars",
       "category": "Phenomenon",
@@ -29,7 +537,7 @@
         },
         {
           "title": "Effect",
-          "description": "Navigation at night is impossible. Any character who sleeps under the stars is targeted by a hostile $spell:Dream$ and dreams of a vast, eerie void."
+          "description": "Navigation at night is impossible. Any character who sleeps under the stars is targeted by a hostile $spell:dream$ (DC $formula:12+floor(level/2)$) and dreams of a vast, eerie void."
         }
       ],
       "checks": [
@@ -49,6 +557,233 @@
       "tags": [
         "hazard",
         "rest"
+      ],
+      "dm_notes": "Use to make a Long Rest less desirable and strain the party's resources."
+    },
+    {
+      "id": "fountain_of_youth",
+      "title": "Fountain of Youth",
+      "category": "Object",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "This fabled fountain grants eternal youth and immortality, but turns drinkers undead.",
+      "genre": [
+        "body horror",
+        "gothic"
+      ],
+      "creature_type": [
+        "undead"
+      ],
+      "threat": "nuisance",
+      "prep": "quest",
+      "environment": [
+        "underdark",
+        "forest",
+        "mountain"
+      ],
+      "premise": "This circular basin of smooth, pale stone holds crystal clear water that glimmers like diamonds. The water cascades continuously over the rim into the pool below and feels ethereal to the touch. It makes absolutely no sound.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "A creature that drinks the water is de-aged to its youthful prime if older, and permanently ceases aging. Its creature type becomes Undead. Creatures that don't age are unaffected. The water loses its properties if removed from the basin and does not provide hydration."
+        },
+        {
+          "title": "Cure",
+          "description": "$spell:true_resurrection$ or $spell:wish$."
+        }
+      ],
+      "dm_notes": "The fountain of youth is a legendary, potent object. Don't just randomly place it somewhere.",
+      "checks": [
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "Strong Necromancy aura on the basin water, disappears when the water is taken out."
+        },
+        {
+          "check": "DC 15 Survival",
+          "detail": "The water doesn't hydrate, because splashing it doesn't make things wet."
+        },
+        {
+          "check": "DC 18 History",
+          "detail": "Identifies the fountain, but not the curse."
+        },
+        {
+          "check": "$spell:legend_lore$ or DC 22 History",
+          "detail": "Identifies the fountain and its properties."
+        }
+      ],
+      "tags": [
+        "artifact",
+        "transformation",
+        "quest"
+      ]
+    },
+    {
+      "id": "hungering_grave",
+      "title": "Hungering Grave",
+      "category": "Location",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "An open grave that forcibly sucks the living in and buries them alive in the Shadowfell.",
+      "genre": [
+        "gothic"
+      ],
+      "threat": "deadly",
+      "prep": "short",
+      "environment": [
+        "underdark",
+        "grassland",
+        "hill"
+      ],
+      "premise": "An open grave, tomb, or crypt awakens with unnatural hunger for life. The area within 60 feet around it becomes difficult terrain, and any character that enters the area for the first time on a turn or starts their turn there must make a DC $formula:12+floor(level/2)$ Strength saving throw. On a failed save, the character is forcibly dragged 30 feet towards the grave.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "If a character enters the grave, the grave entombs them and its plaque acquires the character's name, birth year, and the current year as the year of death. The grave then becomes mundane."
+        },
+        {
+          "title": "Fate",
+          "description": "The entombed character doesn't die, but is transported to the Shadowfell's reflection of the grave, where they remain in a state of suspended animation until unburied from that side. They cannot be dug out from the Material Plane."
+        }
+      ],
+      "checks": [
+        {
+          "check": "Portal detection or DC 20 Arcana",
+          "detail": "One-way portal to the Shadowfell, which has already closed."
+        }
+      ],
+      "tags": [
+        "hook",
+        "hazard",
+        "trap",
+        "party-split",
+        "planar"
+      ],
+      "dm_notes": "Can serve as a hook for a potential rescue mission. Have the party escort an NPC, which can fall into the grave if all PCs manage to avoid it."
+    },
+    {
+      "id": "jester",
+      "title": "Jester",
+      "category": "NPC",
+      "pillars": [
+        "social",
+        "combat"
+      ],
+      "pitch": "An insane performer with a twisted sense of humor who rewards a captive audience and burns critics alive.",
+      "genre": [
+        "gothic",
+        "psychological"
+      ],
+      "threat": "deadly",
+      "prep": "short",
+      "environment": [
+        "forest",
+        "grassland",
+        "hill",
+        "underdark",
+        "desert"
+      ],
+      "premise": "A pale, exuberantly dressed jester (Celestial $monster:spy|performer_maestro|performer_legend|performer_legend$, Lawful Evil) with a creepy smile and bejewelled cane is cackling and performing for a nonexistent audience deep in the wilderness. If the jester notices the party, it starts performing for them.",
+      "sections": [
+        {
+          "title": "Performance",
+          "description": "The jester's jokes are cruel and macabre. It performs gory magic tricks, savagely belittles the party, and mocks intimate details of their lives. If the party attempt to flee, it teleports to intercept them and force them to keep watching."
+        },
+        {
+          "title": "Engagement",
+          "description": "If the party pretends to enjoy the performance or responds with malicious jabs of their own (after 10+ minutes), the jester is ecstatic and rewards the party by fulfilling a $spell:wish$. The wish is not twisted, but carries a whimsical side effect.",
+          "examples": [
+            "A magic weapon farts loudly during serious moments.",
+            "A treasure is made of dangerously sharp objects that deal 1 Slashing damage when touched with bare hands.",
+            "A resurrected ally has a permanent funny grimace stuck on their face."
+          ]
+        },
+        {
+          "title": "Hostility",
+          "description": "If the party makes a threatening move, the jester immediately attacks the party with practical jokes. It can cast $spell:wish$ at will, but only by wording it as a couplet. The effects of this $spell:wish$ are limited to duplicating other spells as level $scale:2|5|7|9$ slots, but the jester is creative and cruel. If the jester becomes Bloodied, it stops fighting and offers to fulfil a $spell:wish$ as usual.",
+          "examples": [
+            "No water in which to dive, now you're gonna BURN ALIVE! AHAHAHA! ($spell:firestorm$)",
+            "Winky dinky made a stinky! *raspberry* ($spell:cloudkill$)",
+            "Roses are red, violets are blue, a fireball is coming, and it's aimed at you! ($spell:fireball$)"
+          ]
+        },
+        {
+          "title": "Last Laugh",
+          "description": "After the party is granted the $spell:wish$ (or they refuse to accept it), the jester performs one last joke and disappears in a burst of gore, continuing its eternal performance elsewhere in the_multiverse."
+        }
+      ],
+      "dm_notes": "Prepare a few dangerous spells and couplets in advance, or improvise with nonsense words. Roleplay the jester as theatric, dramatic, larger-than-life, and don't be afraid to use painfully unfunny jokes.",
+      "checks": [
+        {
+          "check": "DC 20 Stealth",
+          "detail": "Sneak past the jester unnoticed."
+        },
+        {
+          "check": "DC 20 Insight",
+          "detail": "The jester expects applause or participation."
+        },
+        {
+          "check": "DC 23 Insight",
+          "detail": "The jester and its wishes are sincere."
+        },
+        {
+          "check": "DC 23 Performance",
+          "detail": "Impress the jester."
+        },
+        {
+          "check": "Vestige patron or DC 25 Religion",
+          "detail": "The jester is the vestige of a half-forgotten god of comedy and drama. Millennia of obscurity and isolation have rendered it demented and cruel."
+        }
+      ],
+      "tags": [
+        "divine",
+        "reward"
+      ]
+    },
+    {
+      "id": "lone_tree",
+      "title": "Lone Tree",
+      "category": "Location",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "In a dead, withered orchard, a single lush tree is thriving.",
+      "genre": [
+        "folk horror",
+        "melancholic"
+      ],
+      "threat": "safe",
+      "prep": "drop-in",
+      "environment": [
+        "forest",
+        "grassland",
+        "hill"
+      ],
+      "premise": "The party enters a blighted orchard with dead, gnarled trees. One tree amongst them is lush and green, heavy with ripe fruit.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "The tree is mundane, but the fruit is delicious and regrows quickly."
+        },
+        {
+          "title": "Explanation",
+          "description": "An unknown druid sentimentally tends only to this particular tree by casting a confined $spell:plant_growth$ on it every year."
+        }
+      ],
+      "checks": [
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "Tree is mundane."
+        },
+        {
+          "check": "DC 15 Nature, or ability to cast $spell:plant_growth$",
+          "detail": "The soil under the tree has been supernaturally enriched."
+        }
+      ],
+      "tags": [
+        "food",
+        "benign"
       ]
     },
     {
@@ -98,640 +833,6 @@
       ]
     },
     {
-      "id": "mirage",
-      "title": "Mirage",
-      "category": "Phenomenon",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A magical mirage of the adventure goal lures the party into a trap.",
-      "genre": [
-        "liminal",
-        "psychological"
-      ],
-      "threat": "nuisance",
-      "prep": "short",
-      "environment": [
-        "desert",
-        "swamp",
-        "arctic",
-        "grassland",
-        "underdark"
-      ],
-      "premise": "In the distance, the party sees the silhouette of an oasis, escape portal, or something else they've been looking for. It always remains just out of reach.",
-      "sections": [
-        {
-          "title": "Explanation",
-          "description": "The mirage is a lure for the hazard. It might have been left by a band of bandit mages, the campaign antagonist, or the malevolence of the land itself."
-        },
-        {
-          "title": "Effect",
-          "description": "If pursued for 3+ turns, the mirage leads to an environmental hazard."
-        }
-      ],
-      "checks": [
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "Enchantment magic."
-        },
-        {
-          "check": "DC 15 Survival or Nature",
-          "detail": "It's a mirage. In areas where mirages are uncommon, the DC is 22."
-        }
-      ],
-      "tags": [
-        "hazard",
-        "trap"
-      ]
-    },
-    {
-      "id": "pale_choir",
-      "title": "Pale Choir",
-      "category": "Phenomenon",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A grove of eyeless humanoids sings a song that haunts whoever hears it.",
-      "genre": [
-        "folk",
-        "body horror",
-        "gothic"
-      ],
-      "threat": "deadly",
-      "prep": "short",
-      "environment": [
-        "forest",
-        "swamp"
-      ],
-      "premise": "The party hears beautiful, harmonious, inhuman singing. It comes from a grove of dead trees, where dozens of small, pale Humanoids have congregated. They are hairless, eyeless, with mouths stretched open in song. They do not move, but their heads turn to follow the party as they pass. The humanoids do not react to being attacked; they simply watch and sing.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "Any character who hears the song must make a Wisdom saving throw. Fey and Elves succeed automatically. On a failure, the character is cursed without any immediately obvious effect."
-        },
-        {
-          "title": "Curse",
-          "description": "At the middle of the next Long Rest, the cursed characters wake from their sleep and begin to sing the same song with stretched-open mouths and empty expressions. Any character who hears the cursed characters sing repeats the save. Cursed characters don't remember singing. The song is loud enough to wake up the party and degrades the rest into a Short Rest."
-        },
-        {
-          "title": "Cure",
-          "description": "The curse is tied to the song. If a cursed character cannot hear the song (for example by having the Deafened condition or being within a $spell:Silence$), they automatically succeed on the saving throw and lose the curse. The curse also ends if the grove is consecrated by $spell:Hallow$ (Silence effect)."
-        },
-        {
-          "title": "Fate",
-          "description": "If a character dies while cursed, they do not stay dead. Their body rises as one of the choir and they journey to join the grove, singing forever."
-        }
-      ],
-      "checks": [
-        {
-          "check": "DC 20 Religion",
-          "detail": "A desecrated site of a minor god (an Empyrean). The choir must have been the congregation who got punished for refusing to sing praises."
-        },
-        {
-          "check": "DC 25 Religion",
-          "detail": "Consecrating the grove would release the enthralled Humanoids."
-        }
-      ],
-      "tags": [
-        "curse",
-        "divine",
-        "rest",
-        "transformation"
-      ]
-    },
-    {
-      "id": "sinister_echo",
-      "title": "Sinister Echo",
-      "category": "Phenomenon",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "Distorted echoes of the party's own sounds induce a lasting paranoia.",
-      "genre": [
-        "psychological",
-        "liminal"
-      ],
-      "threat": "nuisance",
-      "prep": "drop-in",
-      "environment": [
-        "forest",
-        "hill",
-        "underdark",
-        "mountain"
-      ],
-      "premise": "In this region, every sound the party makes is echoed back distorted and malevolent. The characters' own footsteps make them feel like they are being followed, and they constantly feel like something is watching them.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "If 1 minute passes without the party finding the source, every character is targeted by a $spell:Bane$ that lasts until the character completes a Long Rest. While affected, the character fails all Insight checks."
-        }
-      ],
-      "checks": [
-        {
-          "check": "DC 20 Survival or Investigation",
-          "detail": "The sound is coming from the party, just distorted."
-        }
-      ],
-      "tags": [
-        "curse",
-        "puzzle"
-      ]
-    },
-    {
-      "id": "evil_twins",
-      "title": "Evil Twins",
-      "category": "NPC",
-      "pillars": [
-        "social",
-        "combat"
-      ],
-      "pitch": "An exact duplicate party appears in the wilderness, waiting for the perfect moment to replace their originals.",
-      "genre": [
-        "psychological",
-        "gothic"
-      ],
-      "creature_type": [
-        "doppelganger",
-        "fey"
-      ],
-      "threat": "deadly",
-      "prep": "short",
-      "environment": [
-        "forest",
-        "grassland",
-        "hill",
-        "swamp",
-        "underdark"
-      ],
-      "premise": "The party meets another party that looks exactly like them, lost in the same area. The clones have the party's memories and appear cooperative.",
-      "sections": [
-        {
-          "title": "Explanation",
-          "description": "The clones are physical avatars of survival greed, made manifest by a dark leyline that crosses the land."
-        },
-        {
-          "title": "Effect",
-          "description": "If joined, the clones turn on the characters at the next encounter or attack them while resting. In combat, each clone uses the $monster:Ghoul|Wight|Ghast|Vampire$ statistics, except it is a Fey."
-        }
-      ],
-      "checks": [
-        {
-          "check": "DC 15 Arcana or Nature",
-          "detail": "Presence of a leyline. Can cause strange manifestations."
-        },
-        {
-          "check": "DC 20 Perception or Insight",
-          "detail": "Subtle malevolence about the clones' appearance or behavior."
-        },
-        {
-          "check": "DC 25 Arcana or Nature",
-          "detail": "The leyline is tainted and the clones are manifestations of survival greed. They will betray the party."
-        }
-      ],
-      "dm_notes": "The clones don't know they are clones. If the party identifies the leyline, have the clones accuse the party of being the fake ones.",
-      "tags": [
-        "trap"
-      ]
-    },
-    {
-      "id": "crooked_idol",
-      "title": "Crooked Idol",
-      "category": "Object",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A faceless wooden shrine demands a personal sacrifice from passersbies.",
-      "genre": [
-        "folk",
-        "melancholic"
-      ],
-      "threat": "nuisance",
-      "prep": "drop-in",
-      "environment": [
-        "forest",
-        "hill",
-        "mountain",
-        "swamp"
-      ],
-      "premise": "In a clearing or along a ridge, the party finds a small shrine, crudely carved from black wood, depicting a figure with too many arms and no face. Offerings surround it: withered flowers, small bones, a child's toy, a lock of hair, a silver coin. The idol radiates a sense of patient need.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "Any character who passes within 10 feet of the idol and then departs without leaving an offering must make a Charisma saving throw. They automatically fail if they remove any of the existing offerings from the shrine. On a failure, the character is cursed by an angry deity."
-        },
-        {
-          "title": "Curse",
-          "description": "The character is plagued by a persistent feeling of being watched. Food and water tastes like ash in their mouth, and sleep brings only nightmares of the faceless figure. They are too restless to benefit from Short Rests."
-        },
-        {
-          "title": "Cure",
-          "description": "The curse can be cured by a spell that dispels possession or curses using a level 5+ spell slot, or if the character returns to the idol and leaves an offering of personal significance of the player's choice. The idol disregards meaningless offerings."
-        },
-        {
-          "title": "Blessing",
-          "description": "If a character leaves an offering the very first time they approach the idol, they receive a Charm of Restoration."
-        }
-      ],
-      "checks": [
-        {
-          "check": "DC 15 Investigation",
-          "detail": "The offerings are mostly sentimental."
-        },
-        {
-          "check": "DC 20 Religion",
-          "detail": "A minor folk god. Such gods do not ask for much, only that you do not ignore them, and that you are willing to part with what you have."
-        },
-        {
-          "check": "DC 20 Arcana",
-          "detail": "The magic is tied to the place itself, not the idol. Breaking the idol would anger whoever built it, and the curse would remain until the offering is made anyway."
-        }
-      ],
-      "tags": [
-        "divine",
-        "curse",
-        "reward",
-        "rest",
-        "healing"
-      ]
-    },
-    {
-      "id": "cursed_oasis",
-      "title": "Cursed Oasis",
-      "category": "Location",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A lush grove offers $spell:Goodberry$ fruits that addict the eater.",
-      "genre": [
-        "folk",
-        "liminal"
-      ],
-      "threat": "nuisance",
-      "prep": "drop-in",
-      "environment": [
-        "desert",
-        "swamp",
-        "mountain",
-        "underdark"
-      ],
-      "premise": "The party finds a colorful, bountiful oasis in an otherwise hostile environment, such as a desert, deadwood, or a poisonous bog. There are lush bushes, laden trees, or mushroom clusters with plump, aromatic fruits.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "The fruits have the properties of a $spell:Goodberry$. Once picked, the fruits spoil after 1 day."
-        },
-        {
-          "title": "Curse",
-          "description": "A creature that consumes a fruit becomes cursed and craves the oasis fruits whenever it's hungry. It can't gain nourishment from any other food."
-        },
-        {
-          "title": "Cure",
-          "description": "$spell:Remove Curse$ or $spell:Greater Restoration$."
-        }
-      ],
-      "checks": [
-        {
-          "check": "Ability to cast $spell:Goodberry$",
-          "detail": "The fruit is a $spell:Goodberry$."
-        },
-        {
-          "check": "DC 15 Survival",
-          "detail": "The fruit is unnaturally free of blemishes and avoided by insects."
-        },
-        {
-          "check": "$spell:Detect Magic$ or DC 20 Arcana",
-          "detail": "Enchantment magic."
-        }
-      ],
-      "tags": [
-        "food",
-        "curse",
-        "healing",
-        "reward"
-      ]
-    },
-    {
-      "id": "styx_spring",
-      "title": "Styx Spring",
-      "category": "Location",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A spring that quenches thirst and hunger, but steals memories.",
-      "genre": [
-        "melancholic",
-        "gothic"
-      ],
-      "threat": "nuisance",
-      "prep": "drop-in",
-      "environment": [
-        "underdark",
-        "swamp",
-        "mountain"
-      ],
-      "premise": "The party finds a strange, murky stream that disappears underground after a few hundred feet.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "A character that wades into or drinks from the water must make a Wisdom saving throw. On a failure, the character automatically succeeds on future saves against this stream's water, but permanently forgets one meaningful memory of the player's choice, and their Intelligence, Wisdom, and Charisma scores decrease by 1d4 each until the end of a Long Rest. The water provides enough hydration and nutrition for 1 day."
-        }
-      ],
-      "dm_notes": "This encounter should be used when the party or someone with them desperately needs food or water.",
-      "checks": [
-        {
-          "check": "DC 15 Survival or Nature",
-          "detail": "It is illogical for a stream to exist at this location – it must be supernatural."
-        },
-        {
-          "check": "DC 20 Arcana or Religion",
-          "detail": "The stream is a minor tributary of Styx."
-        },
-        {
-          "check": "DC 20 Perception",
-          "detail": "A very faint, foul odor is coming from the water."
-        }
-      ],
-      "tags": [
-        "planar",
-        "food",
-        "curse",
-        "reward"
-      ]
-    },
-    {
-      "id": "whispering_cairn",
-      "title": "Whispering Cairn",
-      "category": "Object",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A mysterious stone heap repeatedly manifests in the wilderness and whispers prophecies.",
-      "genre": [
-        "liminal"
-      ],
-      "threat": "safe",
-      "prep": "drop-in",
-      "environment": [
-        "grassland",
-        "hill",
-        "mountain",
-        "desert"
-      ],
-      "premise": "If a character succeeds on a Perception check while outdoors, they spot a cairn of weathered stones, sitting somewhere out of the way. The exact same cairn appears in three different locations, always after a successful Perception check that looks for something else.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "Up close, the cairn whispers barely intelligible prophecies. If a character tries to find out a particular answer, the cairn casts $spell:Augury$ and answers with 'Weal,' supernaturally altering the future."
-        },
-        {
-          "title": "Aftermath",
-          "description": "If the cairn is knocked loose, it becomes mundane and its unfulfilled prophecies are cancelled. Otherwise, it stops appearing after the third time."
-        }
-      ],
-      "checks": [
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "Divination magic."
-        },
-        {
-          "check": "DC 15 Arcana",
-          "detail": "The whispers are prophecies. A careful listener can learn something from them."
-        },
-        {
-          "check": "DC 25 Religion",
-          "detail": "Sometimes a prophet who perishes prematurely leaves a trace of their gift, drawn to those who relentlessly seek the truth."
-        }
-      ],
-      "tags": [
-        "benign",
-        "reward",
-        "recurring",
-        "divine",
-        "time"
-      ]
-    },
-    {
-      "id": "fountain_of_youth",
-      "title": "Fountain of Youth",
-      "category": "Object",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "This fabled fountain grants eternal youth and immortality, but turns drinkers undead.",
-      "genre": [
-        "body horror",
-        "gothic"
-      ],
-      "creature_type": [
-        "undead"
-      ],
-      "threat": "nuisance",
-      "prep": "quest",
-      "environment": [
-        "underdark",
-        "forest",
-        "mountain"
-      ],
-      "premise": "This circular basin of smooth, pale stone holds crystal clear water that glimmers like diamonds. The water cascades continuously over the rim into the pool below and feels ethereal to the touch. It makes absolutely no sound.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "A creature that drinks the water is de-aged to its youthful prime if older, and permanently ceases aging. Its creature type becomes Undead. Creatures that don't age are unaffected. The water loses its properties if removed from the basin and does not provide hydration."
-        },
-        {
-          "title": "Cure",
-          "description": "$spell:True Resurrection$ or $spell:Wish$."
-        }
-      ],
-      "dm_notes": "The fountain of youth is a legendary, potent object. Don't just randomly place it somewhere.",
-      "checks": [
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "Strong Necromancy aura on the basin water, disappears when the water is taken out."
-        },
-        {
-          "check": "DC 15 Survival",
-          "detail": "The water doesn't hydrate, because splashing it doesn't make things wet."
-        },
-        {
-          "check": "DC 18 History",
-          "detail": "Identifies the fountain, but not the curse."
-        },
-        {
-          "check": "$spell:Legend Lore$ or DC 22 History",
-          "detail": "Identifies the fountain and its properties."
-        }
-      ],
-      "tags": [
-        "artifact",
-        "transformation"
-      ]
-    },
-    {
-      "id": "hungering_grave",
-      "title": "Hungering Grave",
-      "category": "Location",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "An open grave that forcibly sucks the living in and buries them alive in the Shadowfell.",
-      "genre": [
-        "gothic"
-      ],
-      "threat": "deadly",
-      "prep": "short",
-      "environment": [
-        "underdark",
-        "grassland",
-        "hill"
-      ],
-      "premise": "An open grave, tomb, or crypt awakens with unnatural hunger for life. The area within 60 feet around it becomes difficult terrain, and any character that enters the area for the first time on a turn or starts their turn there must make a Strength saving throw. On a failed save, the character is forcibly dragged 30 feet towards the grave.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "If a character enters the grave, the grave entombs them and its plaque acquires the character's name, birth year, and the current year as the year of death. The grave then becomes mundane."
-        },
-        {
-          "title": "Fate",
-          "description": "The entombed character doesn't die, but is transported to the Shadowfell's reflection of the grave, where they remain in a state of suspended animation until unburied from that side. They cannot be dug out from the Material Plane."
-        }
-      ],
-      "checks": [
-        {
-          "check": "DC 20 Religion or Arcana",
-          "detail": "Shadowfell connection."
-        }
-      ],
-      "tags": [
-        "quest",
-        "hazard",
-        "trap",
-        "party-split",
-        "planar"
-      ]
-    },
-    {
-      "id": "empty_tavern",
-      "title": "Empty Tavern",
-      "category": "Location",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A fully lit, steaming feast awaits in a seemingly abandoned roadside tavern.",
-      "genre": [
-        "liminal",
-        "melancholic"
-      ],
-      "threat": "safe",
-      "prep": "drop-in",
-      "environment": [
-        "grassland",
-        "forest",
-        "hill",
-        "mountain"
-      ],
-      "premise": "The party stumbles upon a roadside tavern that is lit and warm, with smoke curling up from the chimney. The tables inside are set for a feast, with platters of roasted game, bowls of stew, loaves of crusty bread, wheels of cheese, and flagons of ale. The food is hot, as if just served. The tavern, however, is completely empty.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "The feast has the properties of a $spell:Heroes' Feast$. It's not cursed or poisoned."
-        },
-        {
-          "title": "Persistence",
-          "description": "The tavern disappears if the party loses line of sight to it."
-        }
-      ],
-      "checks": [
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "Conjuration everywhere."
-        },
-        {
-          "check": "DC 15 Investigation (after 1+ minutes)",
-          "detail": "The food is not cooling, nor is the fireplace consuming the logs."
-        },
-        {
-          "check": "DC 21 Arcana, or ability to cast $spell:Heroes' Feast$",
-          "detail": "The food is a $spell:Heroes' Feast$."
-        },
-        {
-          "check": "DC 20 Perception",
-          "detail": "Everything is pristine. No dust, cobwebs, or any wear and tear. It's like the building just appeared."
-        },
-        {
-          "check": "DC 25 Religion",
-          "detail": "Some gods of hospitality are known to intervene in such manner to help weary travellers. They don't require anything in return, only faith and trust."
-        }
-      ],
-      "tags": [
-        "benign",
-        "sanctuary",
-        "food",
-        "divine",
-        "reward"
-      ]
-    },
-    {
-      "id": "silent_clock_tower",
-      "title": "Silent Clock Tower",
-      "category": "Location",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "A town's clock tower has been magically silenced, but the silence keeps a deadly curse contained.",
-      "genre": [
-        "gothic"
-      ],
-      "threat": "deadly",
-      "prep": "quest",
-      "environment": [
-        "urban"
-      ],
-      "premise": "The town's clock tower never announces the time. The belfry is completely silent. Townsfolk don't know why, and they have been unable to repair or replace it. They say the tower is indestructible.",
-      "sections": [
-        {
-          "title": "Explanation",
-          "description": "The tower's bell is cursed with death magic. Many generations ago, townsfolk hired adventurers to deal with the curse, and the adventurers used $spell:Hallow$ (Silence) to mute the bell. The curse still lingers, but is contained. The truth has since been lost to time and many inaccurate legends have taken its place."
-        },
-        {
-          "title": "Resolution",
-          "description": "The curse is too powerful to lift. If the $spell:Hallow$ is dispelled, the bell starts to announce the time once more, but every ring of the bell casts $spell:Toll the Dead$ (level 11) on everyone in the town square."
-        }
-      ],
-      "checks": [
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "Abjuration, Necromancy, and Transmutation."
-        },
-        {
-          "check": "Level 9+ Cleric, or ability to cast $spell:Hallow$",
-          "detail": "The belfry is consecrated."
-        },
-        {
-          "check": "Entering the belfry",
-          "detail": "The silence affects everything, not just the bell."
-        },
-        {
-          "check": "DC 15 History",
-          "detail": "The tower is ancient. It must have been around for many generations."
-        },
-        {
-          "check": "DC 15 Perception",
-          "detail": "The tower is extremely well-preserved. Much better than all other buildings."
-        },
-        {
-          "check": "DC 22 Arcana (12 if $spell:Detect Magic$ was used)",
-          "detail": "The tower is cursed, but the curse is dormant. Undoing the protective ward will unleash the curse's full power."
-        }
-      ],
-      "tags": [
-        "quest",
-        "town",
-        "curse",
-        "puzzle"
-      ]
-    },
-    {
       "id": "lost_door",
       "title": "Lost Door",
       "category": "Object",
@@ -771,14 +872,15 @@
       ],
       "checks": [
         {
-          "check": "DC 15 History",
-          "detail": "The door and room are both archaic."
+          "check": "DC 22 History or $spell:legend_lore$",
+          "detail": "An obscure legend speaks of a door that leads anywhere."
         },
         {
-          "check": "DC 20 Arcana",
-          "detail": "There must be a Key that goes with the door."
+          "check": "Encounter",
+          "detail": "The party chases a villain that flees through the door, demonstrating that it's a portal."
         }
       ],
+      "dm_notes": "The Door can make or break campaigns. Place it carefully and deliberately.",
       "tags": [
         "benign",
         "portal",
@@ -788,67 +890,105 @@
       ]
     },
     {
-      "id": "unmarked_grave",
-      "title": "Unmarked Grave",
-      "category": "Location",
+      "id": "mirage",
+      "title": "Mirage",
+      "category": "Phenomenon",
       "pillars": [
-        "exploration",
-        "combat"
+        "exploration"
       ],
-      "pitch": "A fresh grave contains the digger's own corpse, holding a valuable object and a possessive consciousness.",
+      "pitch": "A magical mirage of the adventure goal lures the party into a trap.",
       "genre": [
-        "psychological",
+        "liminal",
+        "psychological"
+      ],
+      "threat": "nuisance",
+      "prep": "short",
+      "environment": [
+        "desert",
+        "swamp",
+        "arctic",
+        "grassland",
+        "underdark"
+      ],
+      "premise": "In the distance, the party sees the silhouette of an oasis, escape portal, or something else they've been looking for. It always remains just out of reach.",
+      "sections": [
+        {
+          "title": "Explanation",
+          "description": "The mirage is a lure for the hazard. It might have been left by a band of bandit mages, the campaign antagonist, or the malevolence of the land itself."
+        },
+        {
+          "title": "Effect",
+          "description": "If pursued for 3+ turns, the mirage leads to an environmental hazard."
+        }
+      ],
+      "checks": [
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "Enchantment magic."
+        },
+        {
+          "check": "DC 15 Survival or Nature",
+          "detail": "It's a mirage. In areas where mirages are uncommon, the DC is 22."
+        }
+      ],
+      "tags": [
+        "hazard",
+        "trap"
+      ]
+    },
+    {
+      "id": "pale_choir",
+      "title": "Pale Choir",
+      "category": "Phenomenon",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A grove of eyeless humanoids sings a song that haunts whoever hears it.",
+      "genre": [
+        "folk horror",
         "body horror",
         "gothic"
-      ],
-      "creature_type": [
-        "doppelganger"
       ],
       "threat": "deadly",
       "prep": "short",
       "environment": [
         "forest",
-        "grassland",
-        "hill",
         "swamp"
       ],
-      "premise": "The party finds a fresh grave with no marker or stone. The dirt is loose, as if recently dug. A shovel lies nearby, still caked with soil. Unearthing the grave reveals a coffin, housing a perfectly preserved body that looks exactly like the character who dug it. The body's hands are folded over its chest, holding a small object. The object is worth 5,000 gp.",
+      "premise": "The party hears beautiful, harmonious, inhuman singing. It comes from a grove of dead trees, where dozens of small, pale Humanoids have congregated. They are hairless, eyeless, with mouths stretched open in song. They do not move, but their heads turn to follow the party as they pass. The humanoids do not react to being attacked; they simply watch and sing.",
       "sections": [
         {
-          "title": "Explanation",
-          "description": "The grave is a wound that opens when a character is failing to bury their darker nature. The coffin, the soil, the shovel are all manifestations of that struggle. The grave appears along the party's path during a tense moment of conflict. Inside the grave is the person the character might have been if they had given in to every dark impulse. The object it holds is a symbolic representation of these buried traits."
-        },
-        {
           "title": "Effect",
-          "description": "If the corpse's lookalike touches the object, they must make a Wisdom saving throw. On a failure, they take the object and invisibly swap consciousness with the clone. The character's consciousness now exists inside the buried body, in a state of suspended animation. The entity from the coffin assumes the character's place. Nobody else is the wiser."
+          "description": "Any character who hears the song must make a DC $formula:12+floor(level/2)$ Wisdom saving throw. Characters that don't sleep (such as Elves) succeed automatically. On a failure, the character is cursed without any immediately obvious effect."
         },
         {
-          "title": "The Clone",
-          "description": "The entity from the grave has all the character's memories and abilities, but displays repressed traits. It is cruel where the character was kind, silent where the character was talkative, hungry where the character was content. It doesn't understand why its behavior is alienating the party. Eventually it lashes out in a fit of rage and despair, having briefly tasted life only to have been met with rejection."
+          "title": "Curse",
+          "description": "At the middle of the next Long Rest, the cursed characters wake from their sleep and begin to sing the same song with stretched-open mouths and empty expressions. Cursed characters and those who hear them sing repeat the save. Cursed characters sing for 1 hour, and are vacant while singing. They don't remember anything afterwards. The song wakes up the party and degrades the rest into a Short Rest."
         },
         {
           "title": "Cure",
-          "description": "The character remains in the coffin until the clone dies or the object is returned. The clone can be controlled by the player until the DM decides it attacks the party (using the $monster:Revenant$ statistics). If the clone is killed, the character awakens in the coffin and must dig their way out. If the object is returned to the coffin, the swap reverses. The clone returns to being a corpse, and the character is freed. Destroying the object itself does nothing."
+          "description": "If a cursed character cannot hear the song (for example by having the Deafened condition or being within a $spell:silence$), they automatically succeed on the saving throw and lose the curse. The curse also ends if the grove is consecrated by $spell:hallow$ (Silence effect)."
+        },
+        {
+          "title": "Fate",
+          "description": "If a character is reduced to 0 Hit Points while cursed, they rise as a choir vessel and journey to join the grove, singing forever."
         }
       ],
       "checks": [
         {
-          "check": "DC 13 Survival",
-          "detail": "The freshly turned earth is loose, but there are no footprints leading to or from the grave."
+          "check": "DC 18 Religion",
+          "detail": "The curse is a divine retribution. The choir aren't undead, they're the husks of a congregation who angered their deity."
         },
         {
-          "check": "DC 15 History or Religion",
-          "detail": "An unmarked grave like that is not made to remember somebody, but to forget."
-        },
-        {
-          "check": "DC 20 Insight",
-          "detail": "The corpse's expression is not peaceful. The lips are pulled back just slightly, the fingers curled as if ready to grasp."
+          "check": "DC 22 Arcana",
+          "detail": "Consecrating the grove would end the curse and undo all transformations."
         }
       ],
       "tags": [
         "curse",
-        "treasure",
-        "party-split"
+        "divine",
+        "rest",
+        "transformation"
       ]
     },
     {
@@ -865,7 +1005,7 @@
       "creature_type": [
         "fey"
       ],
-      "threat": "safe",
+      "threat": "nuisance",
       "prep": "drop-in",
       "environment": [
         "forest",
@@ -873,7 +1013,7 @@
         "grassland",
         "mountain"
       ],
-      "premise": "The party encounters a natural arch with a bizarre property. Looking through the arch, the time of day appears to be reversed – noon into midnight, dusk into dawn.",
+      "premise": "The party encounters a natural arch with a bizarre property. Looking through the arch, the time of day appears to be inverted – noon into midnight, dusk into dawn.",
       "sections": [
         {
           "title": "Effect",
@@ -882,17 +1022,166 @@
       ],
       "checks": [
         {
-          "check": "DC 15 Investigation or Survival (during dawn/dusk)",
-          "detail": "The shadows on the other side point in the wrong direction."
+          "check": "Throw an object through",
+          "detail": "Seen across the arch, but not in the present."
         },
         {
-          "check": "DC 22 Arcana (15 if Fey)",
-          "detail": "A very rare double fey crossing."
+          "check": "DC 18 Arcana (10 if Fey)",
+          "detail": "Very rare double fey crossing, always one-way."
         }
       ],
       "tags": [
         "portal",
         "time"
+      ],
+      "dm_notes": "Passing through the arch wastes half a day. Plan accordingly."
+    },
+    {
+      "id": "severed_shadows",
+      "title": "Severed Shadows",
+      "category": "Phenomenon",
+      "pillars": [
+        "combat"
+      ],
+      "pitch": "The party's shadows detach as invulnerable monsters unless dispersed by darkness.",
+      "genre": [
+        "psychological",
+        "gothic"
+      ],
+      "creature_type": [
+        "undead"
+      ],
+      "threat": "deadly",
+      "prep": "drop-in",
+      "environment": [
+        "underdark",
+        "forest",
+        "swamp"
+      ],
+      "premise": "In this gloom, the characters' shadows take on a subtly aberrant, sinister bent – they may appear slightly detached, have eyes, or not perfectly mimic movements. If the characters spend 1 minute in bright or dim light, their shadows detach and emerge as hostile $monster:shadows$ attacking the party.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "These animated $monster:shadows$ are immune to all damage and conditions, but wink out of existence while in darkness, and rejoin the characters as their regular, mundane shadows if the party leaves the area."
+        },
+        {
+          "title": "Resolution",
+          "description": "The shadows can't be fought, only made to disappear by darkness."
+        }
+      ],
+      "checks": [
+        {
+          "check": "DC 13 Perception",
+          "detail": "The shadows are unnatural."
+        },
+        {
+          "check": "Combat Observation",
+          "detail": "The animated $monster:shadows$ are invulnerable – weapons and spells pass through them."
+        },
+        {
+          "check": "Round 3+",
+          "detail": "The party should realize the $monster:shadows$ would disappear in darkness, if they haven't already."
+        }
+      ],
+      "tags": [
+        "puzzle"
+      ]
+    },
+    {
+      "id": "silent_clock_tower",
+      "title": "Silent Clock Tower",
+      "category": "Location",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A town's clock tower has been magically silenced, but the silence keeps a deadly curse contained.",
+      "genre": [
+        "gothic"
+      ],
+      "threat": "deadly",
+      "prep": "quest",
+      "environment": [
+        "urban"
+      ],
+      "premise": "The town's clock tower never announces the time. The belfry is completely silent. Townsfolk don't know why, and they have been unable to repair or replace it. They say the tower is indestructible.",
+      "sections": [
+        {
+          "title": "Explanation",
+          "description": "The tower's bell is cursed with death magic. Many generations agosfolk hired adventurers to deal with the curse, and the adventurers used $spell:hallow$ (Silence) to mute the bell. The curse still lingers, but is contained. The truth has since been lost to time and many inaccurate legends have taken its place."
+        },
+        {
+          "title": "Resolution",
+          "description": "The curse is too powerful to lift. If the $spell:hallow$ is dispelled, the bell starts to announce the time once more, but every ring of the bell casts $spell:toll_the_dead$ (level $scale:1|5|11|17$) on everyone in the town square."
+        }
+      ],
+      "checks": [
+        {
+          "check": "$spell:detect_magic$",
+          "detail": "Abjuration, Necromancy, and Transmutation."
+        },
+        {
+          "check": "Level 9+ Cleric, or ability to cast $spell:hallow$",
+          "detail": "The belfry is consecrated."
+        },
+        {
+          "check": "Entering the belfry",
+          "detail": "The silence affects everything, not just the bell."
+        },
+        {
+          "check": "DC 15 History",
+          "detail": "The tower is ancient. It must have been around for many generations."
+        },
+        {
+          "check": "DC 15 Perception",
+          "detail": "The tower is extremely well-preserved. Much better than all other buildings."
+        },
+        {
+          "check": "DC 22 Arcana (12 if $spell:detect_magic$ was used)",
+          "detail": "The tower is cursed, but the curse is dormant. Undoing the protective ward will unleash the curse's full power."
+        }
+      ],
+      "tags": [
+        "quest",
+        "curse",
+        "puzzle"
+      ]
+    },
+    {
+      "id": "sinister_echo",
+      "title": "Sinister Echo",
+      "category": "Phenomenon",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "Distorted echoes of the party's own sounds induce a lasting paranoia.",
+      "genre": [
+        "psychological",
+        "liminal"
+      ],
+      "threat": "nuisance",
+      "prep": "drop-in",
+      "environment": [
+        "forest",
+        "hill",
+        "underdark",
+        "mountain"
+      ],
+      "premise": "In this region, every sound the party makes is echoed back distorted and malevolent. The characters' own footsteps make them feel like they are being followed, and they constantly feel like something is watching them.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "If 1 minute passes without the party finding the source, every character is targeted by a $spell:bane$ (DC $formula:12+floor(level/2)$) that lasts until the character completes a Long Rest. While affected, the character fails all Insight checks."
+        }
+      ],
+      "checks": [
+        {
+          "check": "DC 20 Survival or Investigation",
+          "detail": "The sound is coming from the party, just distorted."
+        }
+      ],
+      "tags": [
+        "curse",
+        "puzzle"
       ]
     },
     {
@@ -936,127 +1225,136 @@
         }
       ],
       "tags": [
-        "recurring"
+        "recurring",
+        "knowledge",
+        "hook"
       ]
     },
     {
-      "id": "black_lake",
-      "title": "Black Lake",
+      "id": "styx_spring",
+      "title": "Styx Spring",
+      "category": "Location",
+      "pillars": [
+        "exploration"
+      ],
+      "pitch": "A spring that quenches thirst and hunger, but steals memories.",
+      "genre": [
+        "melancholic",
+        "gothic"
+      ],
+      "threat": "nuisance",
+      "prep": "drop-in",
+      "environment": [
+        "underdark",
+        "swamp",
+        "mountain"
+      ],
+      "premise": "The party finds a strange, murky stream that disappears underground after a few hundred feet.",
+      "sections": [
+        {
+          "title": "Effect",
+          "description": "A character that wades into or drinks from the water must make a DC $formula:12+floor(level/2)$ Wisdom saving throw. On a failure, the character automatically succeeds on future saves against this stream's water, but permanently forgets one meaningful memory of the player's choice, and their Intelligence, Wisdom, and Charisma scores decrease by 1d4 each until the end of a Long Rest. The water provides enough hydration and nutrition for 1 day."
+        }
+      ],
+      "dm_notes": "You may also rule that the spring connects to Styx and serves as a portal to the Lower Planes.",
+      "checks": [
+        {
+          "check": "DC 15 Survival or Nature",
+          "detail": "It is illogical for a stream to exist at this location – it must be supernatural."
+        },
+        {
+          "check": "DC 20 Arcana",
+          "detail": "The stream is a minor tributary of Styx."
+        },
+        {
+          "check": "DC 20 Perception",
+          "detail": "A very faint, foul odor is coming from the water."
+        }
+      ],
+      "tags": [
+        "planar",
+        "food",
+        "curse",
+        "reward"
+      ]
+    },
+    {
+      "id": "unmarked_grave",
+      "title": "Unmarked Grave",
       "category": "Location",
       "pillars": [
         "exploration",
         "combat"
       ],
-      "pitch": "A pitch-black lake reveals the viewer's drowned corpse, which reaches out to drag them below.",
+      "pitch": "A fresh grave contains the digger's own corpse, holding a valuable object and a possessive consciousness.",
       "genre": [
-        "gothic",
-        "body horror"
+        "psychological",
+        "body horror",
+        "gothic"
       ],
       "creature_type": [
-        "undead"
+        "doppelganger"
       ],
       "threat": "deadly",
-      "prep": "drop-in",
-      "environment": [
-        "swamp",
-        "underdark",
-        "forest"
-      ],
-      "premise": "The party must cross a lake of perfectly still, black water that reflects nothing. If a character looks into the water, they see their own corpse at the bottom, beckoning them.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "Touching the lake while looking at it forces a character to make a Charisma saving throw. On a failed save, their corpse animates as a $monster:Ghoul|Wight|Ghast Gravecaller|Vampire$ and rises from the lake to drag the character into the frigid water. The character has the Grappled condition from the $monster:Ghoul|Wight|Ghast Gravecaller|Vampire$ and is Charmed while Grappled by it. If the character dies, the $monster:Ghoul|Wight|Ghast Gravecaller|Vampire$ disappears."
-        },
-        {
-          "title": "Resolution",
-          "description": "If the character breaks the grapple, they are no longer Charmed. The $monster:Ghoul|Wight|Ghast Gravecaller|Vampire$ becomes an inanimate corpse if defeated. The main risk is drowning."
-        }
-      ],
-      "dm_notes": "It should be possible to bypass the lake, but this should extend the party's journey by at least 1 day.",
-      "checks": [
-        {
-          "check": "DC 18 History",
-          "detail": "Obscure legends mention a Black Lake where everyone drowns. It's thought that the lake is either a myth or its name is symbollic and its infamy exaggerated."
-        }
-      ],
-      "tags": [
-        "hazard",
-        "travel"
-      ]
-    },
-    {
-      "id": "decomposed_barkeep",
-      "title": "Decomposed Barkeep",
-      "category": "NPC",
-      "pillars": [
-        "social"
-      ],
-      "pitch": "A rotting zombie works as a tavern barkeep, and nobody seems to notice.",
-      "genre": [
-        "body horror",
-        "folk"
-      ],
-      "creature_type": [
-        "undead"
-      ],
-      "threat": "safe",
       "prep": "short",
       "environment": [
-        "urban"
+        "forest",
+        "grassland",
+        "hill",
+        "swamp"
       ],
-      "premise": "The barkeep in one of the village taverns looks like a $monster:Zombie$. It otherwise behaves and speaks completely ordinary. Nobody seems to notice its decayed appearance, including itself. If quizzed, they assume the party is making a pitiful attempt at humor.",
+      "premise": "The party finds a fresh grave with no marker or stone. The dirt is loose, as if recently dug. A shovel lies nearby, still caked with soil. Unearthing the grave reveals a coffin, housing a perfectly preserved body that looks exactly like the character who dug it. The body's hands are folded over its chest, holding a small object. The object is worth $gp:1000|5000|25000|50000$.",
       "sections": [
         {
           "title": "Explanation",
-          "description": "Somebody has cursed the barkeep to appear undead to outsiders."
+          "description": "The grave is a psychic wound that opens when a character's evil nature is trying to surface. Inside the grave is the person the character might have been if they had given in to every dark impulse. The object it holds is a symbolic representation of these buried traits."
+        },
+        {
+          "title": "Effect",
+          "description": "If the corpse's lookalike touches the object, they must make a DC $formula:12+floor(level/2)$ Wisdom saving throw. On a failure, they take the object and invisibly swap consciousness with the clone. The character's consciousness now exists inside the buried body, in a state of suspended animation. The entity from the coffin assumes the character's place. Nobody else is the wiser."
+        },
+        {
+          "title": "The Clone",
+          "description": "The entity from the grave has all the character's memories and abilities, but displays repressed traits. It is cruel where the character was kind, silent where the character was talkative, hungry where the character was content. It doesn't understand why its behavior is alienating the party. Eventually it lashes out in a fit of rage and despair, having briefly tasted life only to have been met with rejection."
         },
         {
           "title": "Cure",
-          "description": "$spell:Remove Curse$ or $spell:Greater Restoration$ dispels the curse, but only outsiders can tell that anything happened."
+          "description": "The character remains in the coffin until the clone dies or the object is returned. The clone can be controlled by the player until the DM decides it attacks the party (using the $monster:revenant$ statistics). If the clone is killed, the character awakens in the coffin and must dig their way out. If the object is returned to the coffin, the swap reverses. The clone returns to being a corpse, and the character is freed. Destroying the object itself does nothing."
         }
       ],
       "checks": [
         {
-          "check": "Creature type detection",
-          "detail": "The barkeep reads as Humanoid."
+          "check": "DC 13 Survival",
+          "detail": "The freshly turned earth is loose, but there are no footprints leading to or from the grave."
         },
         {
-          "check": "DC 15 Medicine",
-          "detail": "The barkeep is breathing and has a pulse."
+          "check": "DC 15 History or Religion",
+          "detail": "An unmarked grave like that is not made to remember somebody, but to forget."
         },
         {
-          "check": "DC 20 Perception",
-          "detail": "The barkeep appears alive when viewed through reflective surfaces."
-        },
-        {
-          "check": "DC 20 Persuasion",
-          "detail": "Convince the barkeep that this is not a joke and persuade it to try to recall anything suspicious."
-        },
-        {
-          "check": "Necromancy subclass or DC 20 Religion",
-          "detail": "The barkeep can't be undead."
+          "check": "DC 20 Insight",
+          "detail": "The corpse's expression is not peaceful. The lips are pulled back just slightly, the fingers curled as if ready to grasp."
         }
       ],
       "tags": [
         "curse",
-        "town"
-      ]
+        "treasure",
+        "party-split"
+      ],
+      "dm_notes": "Allow the player to roleplay their clone and quietly instruct them to act in ways that are consistent with their repressed traits."
     },
     {
-      "id": "eternal_rest",
-      "title": "Eternal Rest",
-      "category": "Phenomenon",
+      "id": "whispering_cairn",
+      "title": "Whispering Cairn",
+      "category": "Object",
       "pillars": [
         "exploration"
       ],
-      "pitch": "A peaceful resting ground cures fatigue but slowly petrifies the resting travelers.",
+      "pitch": "A mysterious stone heap repeatedly manifests in the wilderness and whispers prophecies.",
       "genre": [
-        "body horror",
-        "liminal",
-        "melancholic"
+        "liminal"
       ],
-      "threat": "deadly",
+      "threat": "safe",
       "prep": "drop-in",
       "environment": [
         "grassland",
@@ -1064,205 +1362,37 @@
         "mountain",
         "desert"
       ],
-      "premise": "This region is sparsely littered with Petrified bodies, all sitting or lying on the ground. Any character who has Exhaustion levels soon begins to feel an urge to sit down and rest. If a character sits down, their worries and fatigue instantly start waning.",
+      "premise": "If a character succeeds on a Perception check while outdoors, they spot a cairn of weathered stones, sitting somewhere out of the way. The exact same cairn appears in three different locations, always after a successful Perception check that looks for something else.",
       "sections": [
         {
           "title": "Effect",
-          "description": "A character that finishes a Short Rest in this area loses 1 Exhaustion level. For every two hours spent resting, a character is targeted by $spell:Flesh to Stone$."
+          "description": "Up close, the cairn whispers barely intelligible prophecies. If a character tries to find out a particular answer, the cairn casts $spell:augury$ and answers with 'Weal,' supernaturally altering the future."
+        },
+        {
+          "title": "Aftermath",
+          "description": "If the cairn is knocked loose, it becomes mundane and its unfulfilled prophecies are cancelled. Otherwise, it stops appearing after the third time."
         }
       ],
       "checks": [
         {
-          "check": "Observation",
-          "detail": "The Petrified bodies all appear to be sleeping or resting."
-        },
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "Transmutation."
-        },
-        {
-          "check": "DC 10 Medicine",
-          "detail": "No signs of struggle. They willingly accepted their fate."
+          "check": "$spell:detect_magic$",
+          "detail": "Divination magic."
         },
         {
           "check": "DC 15 Arcana",
-          "detail": "The magic is two-pronged. It removes fatigue and petrifies. The petrifying part is weaker."
+          "detail": "The whispers are prophecies. A careful listener can learn something from them."
+        },
+        {
+          "check": "DC 25 Religion",
+          "detail": "Sometimes a prophet who perishes prematurely leaves a trace of their gift, drawn to those who relentlessly seek the truth."
         }
       ],
       "tags": [
-        "hazard",
-        "rest",
-        "trap"
-      ]
-    },
-    {
-      "id": "jester",
-      "title": "Jester",
-      "category": "NPC",
-      "pillars": [
-        "social",
-        "combat"
-      ],
-      "pitch": "An insane performer with a twisted sense of humor who rewards a captive audience and burns critics alive.",
-      "genre": [
-        "gothic",
-        "psychological"
-      ],
-      "threat": "deadly",
-      "prep": "short",
-      "environment": [
-        "forest",
-        "grassland",
-        "hill",
-        "underdark",
-        "desert"
-      ],
-      "premise": "A pale, exuberantly dressed jester (Celestial $monster:performer-maestro|performer-maestro|performer-legend|performer-legend$, Lawful Evil) with a creepy smile and bejewelled cane is cackling and performing for a nonexistent audience deep in the wilderness. If the jester notices the party, it starts performing for them.",
-      "sections": [
-        {
-          "title": "Performance",
-          "description": "The jester's jokes are cruel and macabre. It performs gory magic tricks, savagely belittles the party, and mocks intimate details of their lives. If the party attempt to flee, it teleports to intercept them and force them to keep watching."
-        },
-        {
-          "title": "Engagement",
-          "description": "If the party pretends to enjoy the performance or responds with malicious jabs of their own (after 10+ minutes), the jester is ecstatic and rewards the party by fulfilling a $spell:Wish$. The wish is not twisted, but carries a darkly humorous side effect – for example, if characters wish to resurrect somebody, they may be reborn with an unsettling smile stuck on their face; a treasure may be made of dangerously sharp gemstones, and so on."
-        },
-        {
-          "title": "Hostility",
-          "description": "If the party makes a threatening move, the jester immediately attacks the party with practical jokes. It can cast $spell:Wish$ at will, but only by wording it as a couplet. The effects of this $spell:Wish$ are limited to duplicating other spells as level $scale:2|4|6|8$ slots, but the jester is creative and cruel. If the jester becomes Bloodied, it stops fighting and offers to fulfil a $spell:Wish$ as usual.",
-          "examples": [
-            "No water in which to dive, now you're gonna BURN ALIVE! AHAHAHA! ($spell:Firestorm$)",
-            "Winky dinky made a stinky! *raspberry* ($spell:Cloudkill$)",
-            "Roses are red, violets are blue, a fireball is coming, and it's aimed at you! ($spell:Fireball$)"
-          ]
-        },
-        {
-          "title": "Last Laugh",
-          "description": "After the party is granted the $spell:Wish$ (or they refuse to accept it), the jester performs one last joke and disappears in a burst of gore, continuing its eternal performance elsewhere in the multiverse."
-        }
-      ],
-      "dm_notes": "Prepare a few dangerous spells and couplets in advance, or improvise with nonsense words. Roleplay the jester as theatric, dramatic, larger-than-life, and don't be afraid to use painfully unfunny jokes.",
-      "checks": [
-        {
-          "check": "DC 20 Stealth",
-          "detail": "Sneak past the jester unnoticed."
-        },
-        {
-          "check": "DC 20 Insight",
-          "detail": "The jester expects applause or participation."
-        },
-        {
-          "check": "DC 23 Insight",
-          "detail": "The jester and its wishes are sincere."
-        },
-        {
-          "check": "DC 23 Performance",
-          "detail": "Impress the jester."
-        },
-        {
-          "check": "Vestige patron or DC 25 Religion",
-          "detail": "The jester is the vestige of a half-forgotten god of comedy and drama. Millennia of obscurity and isolation have rendered it demented and cruel."
-        }
-      ],
-      "tags": [
+        "benign",
+        "reward",
+        "recurring",
         "divine",
-        "reward"
-      ]
-    },
-    {
-      "id": "lone_tree",
-      "title": "Lone Tree",
-      "category": "Location",
-      "pillars": [
-        "exploration"
-      ],
-      "pitch": "In a dead, withered orchard, a single lush tree is thriving.",
-      "genre": [
-        "folk",
-        "melancholic"
-      ],
-      "threat": "safe",
-      "prep": "drop-in",
-      "environment": [
-        "forest",
-        "grassland",
-        "hill"
-      ],
-      "premise": "The party enters a blighted orchard with dead, gnarled trees. One tree amongst them is lush and green, heavy with ripe fruit.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "The tree is mundane, but the fruit is delicious and regrows quickly."
-        },
-        {
-          "title": "Explanation",
-          "description": "An unknown druid sentimentally tends only to this particular tree by casting a confined $spell:Plant Growth$ on it every year."
-        }
-      ],
-      "checks": [
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "Tree is mundane."
-        },
-        {
-          "check": "DC 15 Nature, or ability to cast $spell:Plant Growth$",
-          "detail": "The soil under the tree has been supernaturally enriched."
-        }
-      ],
-      "tags": [
-        "food",
-        "benign"
-      ]
-    },
-    {
-      "id": "severed_shadows",
-      "title": "Severed Shadows",
-      "category": "Phenomenon",
-      "pillars": [
-        "combat"
-      ],
-      "pitch": "The party's shadows detach as invulnerable monsters unless dispersed by darkness.",
-      "genre": [
-        "psychological",
-        "gothic"
-      ],
-      "creature_type": [
-        "undead"
-      ],
-      "threat": "deadly",
-      "prep": "drop-in",
-      "environment": [
-        "underdark",
-        "forest",
-        "swamp"
-      ],
-      "premise": "In this gloom, the characters' shadows take on a subtly aberrant, sinister bent – they may appear slightly detached, have eyes, or not perfectly mimic movements. If the characters spend 1 minute in bright or dim light, their shadows detach and emerge as hostile $monster:Shadows$ attacking the party.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "These animated $monster:Shadows$ are immune to all damage and conditions, but wink out of existence while in darkness, and rejoin the characters as their regular, mundane shadows if the party leaves the area."
-        },
-        {
-          "title": "Resolution",
-          "description": "The shadows can't be fought, only made to disappear by darkness."
-        }
-      ],
-      "checks": [
-        {
-          "check": "DC 13 Perception",
-          "detail": "The shadows are unnatural."
-        },
-        {
-          "check": "Combat Observation",
-          "detail": "The animated $monster:Shadows$ are invulnerable – weapons and spells pass through them."
-        },
-        {
-          "check": "Round 3+",
-          "detail": "The party should realize the $monster:Shadows$ would disappear in darkness, if they haven't already."
-        }
-      ],
-      "tags": [
-        "puzzle"
+        "time"
       ]
     },
     {
@@ -1288,88 +1418,31 @@
         "hill",
         "mountain"
       ],
-      "premise": "The ghostly form of a long-dead dwarf wizard (Neutral Evil $monster:Mage$) lingers nearby. The wizard is desperately trying to $spell:Plane Shift$ into an Outer Plane but lacks the means. It is aware it is dead and trapped. It offers the party rare and useful Arcana knowledge about something they need in exchange for a spark of lifeforce to power its escape.",
+      "premise": "The ghostly form of a long-dead dwarf wizard (Undead $monster:mage$, Neutral Evil) lingers nearby. The wizard is desperately trying to $spell:plane_shift$ into an Outer Plane but lacks the means. It is aware it is dead and trapped. It offers the party rare and useful Arcana knowledge about something they need in exchange for a spark of lifeforce to power its escape.",
       "sections": [
         {
           "title": "Effect",
-          "description": "The wizard is lying and knows the spell won't work that way. If a character agrees to help, they drop to 0 Hit Points and gain 1 Exhaustion level. The wizard becomes corporeal and bids the fools farewell before casting $spell:Invisibility$ on itself. The knowledge it shares, however, is genuine."
+          "description": "The wizard is lying and knows the spell won't work that way. If a character agrees to help, they drop to 0 Hit Points and gain 1 Exhaustion level. The wizard becomes corporeal and bids the fools farewell before casting $spell:invisibility$ on itself. The knowledge it shares, however, is genuine."
         }
       ],
       "checks": [
         {
-          "check": "Ability to cast $spell:Plane Shift$, or a difficult Arcana",
+          "check": "Ability to cast $spell:plane_shift$, or DC 17 Arcana",
           "detail": "What the wizard is trying to do is impossible."
         },
         {
-          "check": "DC 25 Charisma",
+          "check": "DC 20 Insight",
+          "detail": "The wizard's knowledge is genuine."
+        },
+        {
+          "check": "DC 23 Charisma",
           "detail": "Convince the wizard to give the knowledge first."
-        },
-        {
-          "check": "DC 25 Insight",
-          "detail": "The wizard is lying about its intentions, but its knowledge is genuine."
         }
       ],
       "tags": [
         "deal",
-        "reward"
-      ]
-    },
-    {
-      "id": "devils_bargain",
-      "title": "Devil's Bargain",
-      "category": "NPC",
-      "pillars": [
-        "social"
-      ],
-      "pitch": "A generous treasure hoard binds looters to an implicit infernal contract.",
-      "genre": [
-        "gothic",
-        "psychological"
-      ],
-      "creature_type": [
-        "infernal"
-      ],
-      "threat": "nuisance",
-      "prep": "quest",
-      "environment": [
-        "any"
-      ],
-      "premise": "The party finds an unusually large treasure after an easy encounter – at least 5,000 gp worth of gems and coins. The treasure is laced with subtle divination magic.",
-      "sections": [
-        {
-          "title": "Effect",
-          "description": "If the party loots the treasure, a devil becomes aware of their presence. The devil considers the treasure an advance payment for a task. By taking it, the party has implicitly agreed."
-        },
-        {
-          "title": "The Devil",
-          "description": "Next time the party rests, the devil appears to meet them. It explains the deal: the treasure was payment for a task. The devil promises the second half of the treasure upon completion. The promise is genuine.",
-          "examples": [
-            "Retrieve a lock of hair from a particular person",
-            "Swap a temple's holy relic with a provided copy",
-            "Draw a sigil with lamb's blood on somebody's door"
-          ]
-        },
-        {
-          "title": "Refusal",
-          "description": "If the party refuses the task but returns the treasure along with \"administrative expenses\", the devil accepts, vanishes, and does not trouble them again. If the party refuses the task without returning the treasure, or attacks the devil, it vanishes. If the party ever leaves their belongings unattended, the devil robs them of every single coin, gem and precious metal they possess until it reclaims what it's owed. It's not interested in gear or magic items, only in treasure."
-        }
-      ],
-      "dm_notes": "The task should be mysterious but creepy. The devil prefers not to elaborate and downplays it if pressed for details. The devil is always polite, friendly and pleasant, even if met with hostility.",
-      "checks": [
-        {
-          "check": "$spell:Detect Magic$",
-          "detail": "The treasure is laced with subtle divination magic."
-        },
-        {
-          "check": "DC 15 Religion or DC 20 Insight",
-          "detail": "The devil will honor the deal."
-        }
-      ],
-      "tags": [
-        "quest",
-        "treasure",
-        "deal",
-        "reward"
+        "reward",
+        "knowledge"
       ]
     }
   ]

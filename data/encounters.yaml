@@ -5,10 +5,10 @@ encounters:
     pillars: [exploration, combat]
     pitch: A pitch-black lake reveals the viewer's drowned corpse, which reaches out to drag them below.
     genre: [gothic, body horror]
-    creature_type: [undead]
+    creature_type: [undead, doppelganger]
     threat: deadly
     prep: drop-in
-    environment: [swamp, underdark, forest]
+    environment: [swamp, underdark, forest, mountain, arctic]
     premise: The party must cross a lake of perfectly still, black water that reflects nothing. If a character looks into the water, they see their own corpse at the bottom, beckoning them.
     sections:
       - title: Effect
@@ -17,9 +17,9 @@ encounters:
         description: If the character breaks the grapple, they are no longer Charmed. The $monster:ghoul|wight|ghast_gravecaller|vampire$ becomes an inanimate corpse if defeated. The main risk is drowning.
     dm_notes: It should be possible to bypass the lake, but this should extend the party's journey by at least 1 day.
     checks:
-      - check: DC 18 History
+      - check: DC 15 History
         detail: Obscure legends mention a Black Lake where everyone drowns. Some think it's either a myth or its name is symbollic.
-    tags: [hazard, travel, doppelganger]
+    tags: [hazard, travel, obstacle]
 
   - id: crooked_idol
     title: Crooked Idol
@@ -58,7 +58,7 @@ encounters:
     genre: [folk horror, liminal]
     threat: nuisance
     prep: drop-in
-    environment: [desert, swamp, mountain, underdark]
+    environment: [desert, swamp, arctic, underdark]
     premise: The party finds a colorful, bountiful oasis in an otherwise hostile environment, such as a desert, deadwood, or a poisonous bog. There are lush bushes, laden trees, or mushroom clusters with plump, aromatic fruits.
     sections:
       - title: Effect
@@ -70,10 +70,10 @@ encounters:
     checks:
       - check: Ability to cast $spell:goodberry$
         detail: The fruit is a $spell:goodberry$.
+      - check: $spell:detect_magic$
+        detail: Enchantment magic.
       - check: DC 15 Survival
         detail: The fruit is unnaturally free of blemishes and avoided by insects.
-      - check: $spell:detect_magic$ or DC 20 Arcana
-        detail: Enchantment magic.
     tags: [food, curse, healing, reward]
     dm_notes: Best used when the party needs food *and* healing.
 
@@ -87,25 +87,25 @@ encounters:
     threat: safe
     prep: short
     environment: [urban]
-    premise: The barkeep in one of the village taverns looks like a $monster:zombie$. It otherwise behaves and speaks completely ordinary. Nobody seems to notice its decayed appearance, including itself. If quizzed, they assume the party is making a pitiful attempt at humor.
+    premise: The barkeep in one of the village taverns looks like a $monster:zombie$. She otherwise behaves and speaks completely ordinary. Nobody seems to notice her decayed appearance, including herself. If quizzed, she assumes the party is making a bad joke.
     sections:
       - title: Explanation
-        description: Somebody has cursed the barkeep to appear undead to outsiders.
+        description: A witch has cursed the barkeep to appear undead to outsiders.
       - title: Cure
         description: $spell:remove_curse$ or $spell:greater_restoration$ dispels the curse, but only outsiders can tell that anything happened.
     checks:
-      - check: Creature type detection
+      - check: Necromancy-related subclass
+        detail: The barkeep can't be undead.
+      - check: Creature detection
         detail: The barkeep reads as Humanoid.
-      - check: DC 15 Medicine
+      - check: DC 14 Medicine
         detail: The barkeep is breathing and has a pulse.
+      - check: DC 18 Persuasion
+        detail: Convince the barkeep that this is not a joke and persuade it to try to recall anything suspicious.
       - check: DC 20 Perception
         detail: The barkeep appears alive when viewed through reflective surfaces.
-      - check: DC 20 Persuasion
-        detail: Convince the barkeep that this is not a joke and persuade it to try to recall anything suspicious.
-      - check: Necromancy subclass or DC 20 Religion
-        detail: The barkeep can't be undead.
-    tags: [curse, puzzle, hook]
-    dm_notes: A minor atmospheric encounter for low stakes roleplay.
+    tags: [curse, puzzle, hook, witchcraft]
+    dm_notes: A minor mystery for low stakes roleplay.
 
   - id: devils_bargain
     title: Devil's Bargain
@@ -117,7 +117,7 @@ encounters:
     threat: nuisance
     prep: quest
     environment: [any]
-    premise: The party finds an unusually large treasure after an easy encounter – at least $gp:1000|2500|5000|15000$ worth of gems and coins. The treasure is laced with subtle divination magic.
+    premise: The party finds an unusually large treasure after an easy encounter – at least $gp:1000|2500|5000|15000$ worth of gems and coins. Almost as if someone left it there on purpose.
     sections:
       - title: Effect
         description: If the party loots the treasure, a devil becomes aware of their presence. The devil considers the treasure an advance payment for a task. By taking it, the party has implicitly agreed.
@@ -159,7 +159,7 @@ encounters:
         detail: Insular religions and witchcraft often make use of such effigies for malignant rituals and curses.
       - check: DC 20 Arcana
         detail: Sympathetic magic – destroying the effigy ends it, but is exceedingly painful.
-    tags: [fey, curse, trap, hook]
+    tags: [witchcraft, curse, trap, hook]
     dm_notes: Can serve as a dramatic hook for a folk horror campaign.
 
   - id: empty_tavern
@@ -170,7 +170,7 @@ encounters:
     genre: [liminal, melancholic]
     threat: safe
     prep: drop-in
-    environment: [grassland, forest, hill, mountain]
+    environment: [arctic, grassland, forest, hill, mountain]
     premise: The party stumbles upon a roadside tavern that is lit and warm, with smoke curling up from the chimney. The tables inside are set for a feast, with platters of roasted game, bowls of stew, loaves of crusty bread, wheels of cheese, and flagons of ale. The food is hot, as if just served. The tavern, however, is completely empty.
     sections:
       - title: Effect
@@ -180,14 +180,14 @@ encounters:
     checks:
       - check: $spell:detect_magic$
         detail: Conjuration everywhere.
-      - check: DC 15 Investigation (after 1+ minutes)
+      - check: DC 13 Investigation (after 1+ minutes)
         detail: The food is not cooling, nor is the fireplace consuming the logs.
-      - check: DC 21 Arcana, or ability to cast $spell:heroes_feast$
+      - check: DC 18 Arcana, or ability to cast $spell:heroes_feast$
         detail: The food is a $spell:heroes_feast$.
-      - check: DC 20 Perception
+      - check: DC 18 Perception
         detail: Everything is pristine. No dust, cobwebs, or any wear and tear. It's like the building just appeared.
-      - check: DC 25 Religion
-        detail: Some gods of hospitality are known to intervene in such manner to help weary travellers. They don't require anything in return, only faith and trust.
+      - check: DC 21 Religion
+        detail: Some gods of the hearth intervene to help travellers who have faith in their hospitality.
     tags: [benign, sanctuary, food, divine, reward]
     dm_notes: Benign encounters used early in an adventure remind players that not everything the party encounters is cursed.
 
@@ -199,19 +199,17 @@ encounters:
     genre: [body horror, liminal, melancholic]
     threat: deadly
     prep: drop-in
-    environment: [grassland, hill, mountain, desert]
+    environment: [grassland, hill, mountain, forest]
     premise: This region is sparsely littered with Petrified bodies, all sitting or lying on the ground. Any character who has Exhaustion levels soon begins to feel an urge to sit down and rest. If a character sits down, their worries and fatigue instantly start waning.
     sections:
       - title: Effect
         description: A character that finishes a Short Rest in this area loses 1 Exhaustion level. For every two hours spent resting, a character is targeted by $spell:flesh_to_stone$ (DC $formula:12+floor(level/2)$).
     checks:
-      - check: Observation
-        detail: The Petrified bodies all appear to be sleeping or resting.
       - check: $spell:detect_magic$
         detail: Transmutation.
       - check: DC 10 Medicine
         detail: No signs of struggle. They willingly succumbed.
-      - check: DC 15 Arcana
+      - check: DC 15 Arcana (after $spell:detect_magic$)
         detail: The magic is two-pronged. It removes fatigue and petrifies. The petrifying part is weaker.
     tags: [hazard, rest, trap]
 
@@ -224,20 +222,20 @@ encounters:
     creature_type: [doppelganger, fey]
     threat: deadly
     prep: short
-    environment: [forest, grassland, hill, swamp, underdark]
+    environment: [arctic, forest, mountain, swamp, underdark]
     premise: The party meets another party that looks exactly like them, lost in the same area. The clones have the party's memories and appear cooperative.
     sections:
       - title: Explanation
         description: The clones are physical avatars of survival greed, made manifest by a dark leyline that crosses the land.
       - title: Effect
-        description: If joined, the clones turn on the characters at the next encounter or attack them while resting. In combat, each clone uses the $monster:ghoul|wight|ghast|vampire$ statistics, except it is a Fey.
+        description: If joined, the clones turn on the characters at the next encounter or attack them while resting. In combat, each clone uses appropriate NPC statistics (e.g. $monster:druid$ or $monster:berserker$), except it is a Fey.
     checks:
-      - check: DC 15 Arcana or Nature
+      - check: DC 15 Arcana
         detail: Presence of a leyline. Can cause strange manifestations.
-      - check: DC 20 Perception or Insight
-        detail: Subtle malevolence about the clones' appearance or behavior.
-      - check: DC 25 Arcana or Nature
-        detail: The leyline is tainted and the clones are manifestations of survival greed. They will betray the party.
+      - check: DC 20 Wisdom
+        detail: Bad feeling about them.
+      - check: DC 22 Arcana
+        detail: The clones are manifestations of selfish survival. They will betray the party.
     dm_notes: The clones don't know they are clones. If the party identifies the leyline, have the clones accuse the party of being the fake ones.
     tags: [trap]
 
@@ -249,7 +247,7 @@ encounters:
     genre: [cosmic, liminal]
     threat: nuisance
     prep: drop-in
-    environment: [grassland, hill, mountain, desert, forest]
+    environment: [arctic, coastal, grassland, hill, mountain, desert]
     premise: At night, the party notices the stars are wrong. Constellations they know are missing. Unfamiliar stars are present. The moon is in the wrong phase. The sky is disorienting and induces vertigo.
     sections:
       - title: Explanation
@@ -263,7 +261,7 @@ encounters:
         detail: Diurnal animals are not asleep at night. This place interferes with sleep.
       - check: DC 25 Arcana
         detail: The sky is seen through the fading echo of an incomplete portal to the Far Realm.
-    tags: [hazard, rest]
+    tags: [hazard, rest, travel]
     dm_notes: Use to make a Long Rest less desirable and strain the party's resources.
 
   - id: fountain_of_youth
@@ -323,7 +321,7 @@ encounters:
     genre: [gothic, psychological]
     threat: deadly
     prep: short
-    environment: [forest, grassland, hill, underdark, desert]
+    environment: [forest, grassland, hill, underdark, mountain]
     premise: A pale, exuberantly dressed jester (Celestial $monster:spy|performer_maestro|performer_legend|performer_legend$, Lawful Evil) with a creepy smile and bejewelled cane is cackling and performing for a nonexistent audience deep in the wilderness. If the jester notices the party, it starts performing for them.
     sections:
       - title: Performance
@@ -341,19 +339,17 @@ encounters:
           - Winky dinky made a stinky! *raspberry* ($spell:cloudkill$)
           - Roses are red, violets are blue, a fireball is coming, and it's aimed at you! ($spell:fireball$)
       - title: Last Laugh
-        description: After the party is granted the $spell:wish$ (or they refuse to accept it), the jester performs one last joke and disappears in a burst of gore, continuing its eternal performance elsewhere in the_multiverse.
+        description: After the party is granted the $spell:wish$ (or they refuse to accept it), the jester performs one last joke and disappears in a burst of gore, continuing its eternal performance elsewhere in the multiverse.
     dm_notes: Prepare a few dangerous spells and couplets in advance, or improvise with nonsense words. Roleplay the jester as theatric, dramatic, larger-than-life, and don't be afraid to use painfully unfunny jokes.
     checks:
-      - check: DC 20 Stealth
-        detail: Sneak past the jester unnoticed.
-      - check: DC 20 Insight
+      - check: DC 18 Insight
         detail: The jester expects applause or participation.
-      - check: DC 23 Insight
+      - check: DC 21 Insight
         detail: The jester and its wishes are sincere.
       - check: DC 23 Performance
         detail: Impress the jester.
       - check: Vestige patron or DC 25 Religion
-        detail: The jester is the vestige of a half-forgotten god of comedy and drama. Millennia of obscurity and isolation have rendered it demented and cruel.
+        detail: The jester is the vestige of a half-forgotten god of comedy and drama, driven insane by millennia of obscurity.
     tags: [divine, reward]
 
   - id: lone_tree
@@ -380,7 +376,7 @@ encounters:
 
   - id: looping_hollow
     title: Looping Hollow
-    category: Location
+    category: Phenomenon
     pillars: [exploration]
     pitch: An eerie gorge that gets travelers stuck in a spatial loop.
     genre: [liminal]
@@ -396,8 +392,8 @@ encounters:
         detail: Familiar landmarks (twisted tree, outcrop), own footsteps ahead.
       - check: DC 18 Athletics
         detail: Climb the walls.
-      - check: DC 23 Arcana
-        detail: A minor planar fold, a very rare occurrence where space is curved.
+      - check: DC 20 Arcana
+        detail: A minor planar fold, a rare occurrence where space is curved.
     tags: [puzzle, travel]
 
   - id: lost_door
@@ -408,7 +404,7 @@ encounters:
     genre: [liminal, cosmic]
     threat: safe
     prep: short
-    environment: [forest, grassland, hill, mountain, underdark, desert, coastal]
+    environment: [arctic, grassland, hill, mountain, underdark, desert, coastal]
     premise: The party finds a perfectly ordinary hinged door standing alone in the wilderness – no walls, no frame, just a wooden door with a tarnished brass handle.
     sections:
       - title: Effect
@@ -434,18 +430,19 @@ encounters:
     threat: nuisance
     prep: short
     environment: [desert, swamp, arctic, grassland, underdark]
-    premise: In the distance, the party sees the silhouette of an oasis, escape portal, or something else they've been looking for. It always remains just out of reach.
+    premise: In the distance, the party sees the visage of the campaign villain, a legendary artifact, or the endgoal of their quest. It always remains just out of reach.
     sections:
-      - title: Explanation
-        description: The mirage is a lure for the hazard. It might have been left by a band of bandit mages, the campaign antagonist, or the malevolence of the land itself.
       - title: Effect
         description: If pursued for 3+ turns, the mirage leads to an environmental hazard.
+      - title: Explanation
+        description: The mirage is a lure for the hazard. It reads creatures' minds and projects their desires. It might have been left by a band of rogue mages, the campaign antagonist, or the malevolence of the land itself.
     checks:
       - check: $spell:detect_magic$
-        detail: Enchantment magic.
-      - check: DC 15 Survival or Nature
+        detail: Divination.
+      - check: DC 15 Nature
         detail: It's a mirage. In areas where mirages are uncommon, the DC is 22.
     tags: [hazard, trap]
+    dm_notes: Use a nuisance hazard from the DMG to lure the party into.
 
   - id: pale_choir
     title: Pale Choir
@@ -456,10 +453,10 @@ encounters:
     threat: deadly
     prep: short
     environment: [forest, swamp]
-    premise: The party hears beautiful, harmonious, inhuman singing. It comes from a grove of dead trees, where dozens of small, pale Humanoids have congregated. They are hairless, eyeless, with mouths stretched open in song. They do not move, but their heads turn to follow the party as they pass. The humanoids do not react to being attacked; they simply watch and sing.
+    premise: The party hears beautiful, harmonious, inhuman singing. It comes from a grove of dead trees, where dozens of small, pale Humanoid husks have congregated. They are hairless, eyeless, with mouths stretched open in song. They do not move, but their heads turn to follow the party as they pass. The humanoids do not react to being attacked; they simply watch and sing.
     sections:
       - title: Effect
-        description: Any character who hears the song must make a DC $formula:12+floor(level/2)$ Wisdom saving throw. Characters that don't sleep (such as Elves) succeed automatically. On a failure, the character is cursed without any immediately obvious effect.
+        description: Any character who hears the song must make a DC $formula:12+floor(level/2)$ Wisdom saving throw. Characters that don't sleep (such as Elves) are unaffected. On a failure, the character is placed under a latent curse.
       - title: Curse
         description: At the middle of the next Long Rest, the cursed characters wake from their sleep and begin to sing the same song with stretched-open mouths and empty expressions. Cursed characters and those who hear them sing repeat the save. Cursed characters sing for 1 hour, and are vacant while singing. They don't remember anything afterwards. The song wakes up the party and degrades the rest into a Short Rest.
       - title: Cure
@@ -468,7 +465,7 @@ encounters:
         description: If a character is reduced to 0 Hit Points while cursed, they rise as a choir vessel and journey to join the grove, singing forever.
     checks:
       - check: DC 18 Religion
-        detail: The curse is a divine retribution. The choir aren't undead, they're the husks of a congregation who angered their deity.
+        detail: The curse is divine retribution. The choir aren't undead, they're the husks of a congregation.
       - check: DC 22 Arcana
         detail: Consecrating the grove would end the curse and undo all transformations.
     tags: [curse, divine, rest, transformation]
@@ -482,7 +479,7 @@ encounters:
     creature_type: [fey]
     threat: nuisance
     prep: drop-in
-    environment: [forest, hill, grassland, mountain]
+    environment: [forest, hill, grassland, swamp]
     premise: The party encounters a natural arch with a bizarre property. Looking through the arch, the time of day appears to be inverted – noon into midnight, dusk into dawn.
     sections:
       - title: Effect
@@ -519,11 +516,12 @@ encounters:
       - check: Round 3+
         detail: The party should realize the $monster:shadows$ would disappear in darkness, if they haven't already.
     tags: [puzzle]
+    dm_notes: Increase the Shadows' hit bonus at higher levels.
 
   - id: silent_clock_tower
     title: Silent Clock Tower
     category: Location
-    pillars: [exploration]
+    pillars: [exploration, social]
     pitch: A town's clock tower has been magically silenced, but the silence keeps a deadly curse contained.
     genre: [gothic]
     threat: deadly
@@ -533,8 +531,12 @@ encounters:
     sections:
       - title: Explanation
         description: The tower's bell is cursed with death magic. Many generations agosfolk hired adventurers to deal with the curse, and the adventurers used $spell:hallow$ (Silence) to mute the bell. The curse still lingers, but is contained. The truth has since been lost to time and many inaccurate legends have taken its place.
+        examples:
+          - The clockmaker wasn't paid for his work, so he haunts the bell in death.
+          - A rebel leader used the bell to rally supporters to arms. When the rebellion was crushed, the tower was cursed.
+          - The bell was a gift from the god of craftsmanship. The town angered the god, so it took the gift away.
       - title: Resolution
-        description: The curse is too powerful to lift. If the $spell:hallow$ is dispelled, the bell starts to announce the time once more, but every ring of the bell casts $spell:toll_the_dead$ (level $scale:1|5|11|17$) on everyone in the town square.
+        description: The curse is too powerful to lift. If the $spell:hallow$ is dispelled, the bell starts to announce the time once more, but every chime casts $spell:toll_the_dead$ (level $scale:1|5|11|17$) on everyone in the town square.
     checks:
       - check: $spell:detect_magic$
         detail: Abjuration, Necromancy, and Transmutation.
@@ -542,13 +544,12 @@ encounters:
         detail: The belfry is consecrated.
       - check: Entering the belfry
         detail: The silence affects everything, not just the bell.
-      - check: DC 15 History
-        detail: The tower is ancient. It must have been around for many generations.
-      - check: DC 15 Perception
-        detail: The tower is extremely well-preserved. Much better than all other buildings.
-      - check: DC 22 Arcana (12 if $spell:detect_magic$ was used)
+      - check: DC 15 History (+3 per legend)
+        detail: Expose inconsistencies in a false legend.
+      - check: DC 15 Arcana (if $spell:detect_magic$ was used)
         detail: The tower is cursed, but the curse is dormant. Undoing the protective ward will unleash the curse's full power.
     tags: [quest, curse, puzzle]
+    dm_notes: Use a couple legends as red herrings before sharing a more accurate one. It needn't be the truth, just enough to imply the real curse isn't the silence.
 
   - id: sinister_echo
     title: Sinister Echo
@@ -558,7 +559,7 @@ encounters:
     genre: [psychological, liminal]
     threat: nuisance
     prep: drop-in
-    environment: [forest, hill, underdark, mountain]
+    environment: [forest, underdark, mountain]
     premise: In this region, every sound the party makes is echoed back distorted and malevolent. The characters' own footsteps make them feel like they are being followed, and they constantly feel like something is watching them.
     sections:
       - title: Effect
@@ -587,8 +588,9 @@ encounters:
       - check: DC 15 History
         detail: The archaic nature of the location and its denizens' accents and mannerisms.
       - check: DC 25 Arcana
-        detail: It's a lost memory that has acquired substance. Odd, but harmless.
+        detail: It's a lost memory that has acquired substance.
     tags: [recurring, knowledge, hook]
+    dm_notes: Use this encounter as a roleplay opportunity or to provide valuable historical lore.
 
   - id: styx_spring
     title: Styx Spring
@@ -598,12 +600,12 @@ encounters:
     genre: [melancholic, gothic]
     threat: nuisance
     prep: drop-in
-    environment: [underdark, swamp, mountain]
+    environment: [underdark, grassland, mountain, arctic]
     premise: The party finds a strange, murky stream that disappears underground after a few hundred feet.
     sections:
       - title: Effect
         description: A character that wades into or drinks from the water must make a DC $formula:12+floor(level/2)$ Wisdom saving throw. On a failure, the character automatically succeeds on future saves against this stream's water, but permanently forgets one meaningful memory of the player's choice, and their Intelligence, Wisdom, and Charisma scores decrease by 1d4 each until the end of a Long Rest. The water provides enough hydration and nutrition for 1 day.
-    dm_notes: You may also rule that the spring connects to Styx and serves as a portal to the Lower Planes.
+    dm_notes: You may also rule that the spring connects to Styx and leads to the Lower Planes.
     checks:
       - check: DC 15 Survival or Nature
         detail: It is illogical for a stream to exist at this location – it must be supernatural.
@@ -636,7 +638,7 @@ encounters:
     checks:
       - check: DC 13 Survival
         detail: The freshly turned earth is loose, but there are no footprints leading to or from the grave.
-      - check: DC 15 History or Religion
+      - check: DC 15 History
         detail: An unmarked grave like that is not made to remember somebody, but to forget.
       - check: DC 20 Insight
         detail: The corpse's expression is not peaceful. The lips are pulled back just slightly, the fingers curled as if ready to grasp.
@@ -657,15 +659,14 @@ encounters:
       - title: Effect
         description: Up close, the cairn whispers barely intelligible prophecies. If a character tries to find out a particular answer, the cairn casts $spell:augury$ and answers with 'Weal,' supernaturally altering the future.
       - title: Aftermath
-        description: If the cairn is knocked loose, it becomes mundane and its unfulfilled prophecies are cancelled. Otherwise, it stops appearing after the third time.
+        description: If the cairn is knocked loose, it becomes mundane and its unfulfilled prophecies are revoked. Otherwise, it stops appearing after the third time.
     checks:
       - check: $spell:detect_magic$
-        detail: Divination magic.
-      - check: DC 15 Arcana
+        detail: Divination.
+      - check: DC 15 Religion
         detail: The whispers are prophecies. A careful listener can learn something from them.
-      - check: DC 25 Religion
-        detail: Sometimes a prophet who perishes prematurely leaves a trace of their gift, drawn to those who relentlessly seek the truth.
     tags: [benign, reward, recurring, divine, time]
+    dm_notes: Benign encounters used early in an adventure remind players that not everything the party encounters is cursed.
 
   - id: wizard_ghost
     title: Wizard Ghost
@@ -689,3 +690,28 @@ encounters:
       - check: DC 23 Charisma
         detail: Convince the wizard to give the knowledge first.
     tags: [deal, reward, knowledge]
+
+  - id: uncrossable_crevice
+    title: Uncrossable Crevice
+    category: Location
+    pillars: [exploration]
+    pitch: A miles-long fissure supernaturally resists attempts at crossing.
+    genre: [liminal]
+    threat: nuisance
+    prep: drop-in
+    environment: [arctic, mountain, underdark]
+    premise: The party's path is blocked by a natural crevice, several miles long and at least 30 feet wide. It's unfathomably deep, its walls disappearing in impenetrable darkness after 100 feet down.
+    sections:
+      - title: Effect
+        description: The crevice resolutely resists attempts at crossing it. No bridge or flight seems to reach the other side.
+      - title: Resolution
+        description: Falling 100+ feet into the crevice teleports you safely to the other side. Long distance teleportation or ethereal travel also work.
+    checks:
+      - check: Truesight or $spell:see_invisibility$
+        detail: Shimmering wall that extends from the middle of the whole crevice high into the sky.
+      - check: Navigation subclass or DC 17 Investigation
+        detail: A visible object thrown into the abyss (such as a torch) can be observed teleporting to the other side.
+      - check: Gate-sensing magic
+        detail: The darkness deep down is a portal. Another invisible portal wall seamlessly prevents crossing in a straight line.
+    tags: [travel, obstacle]
+    dm_notes: Going around the crevice should extend the party's journey by at least 1 day.
